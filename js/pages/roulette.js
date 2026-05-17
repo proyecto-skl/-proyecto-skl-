@@ -10,61 +10,64 @@ let gameState = {
   skips: 2,
   history: [],
   currentLevel: null,
-  pool: [] // Niveles cargados de la Main List
+  pool: [] // Niveles cargados desde data/levels/
 };
 
-/* ── Función Principal de Renderizado (Nombrada para app.js) ── */
-export async function render(container) {
-  container.innerHTML = `
-    <div class="state-message">
-      <div class="spinner"></div>
-      <p style="margin-top:16px;">Preparando los engranajes de la ruleta...</p>
-    </div>
-  `;
-
-  try {
-    // 1. Obtener de forma segura la lista de niveles desde la Main List
-    const loc = window.location;
-    const rootUrl = loc.protocol + '//' + loc.host + loc.pathname.replace(/\/(js\/pages|pages)\/.*$/, '').replace(/\/index\.html$/, '').replace(/\/$/, '');
-    
-    const listResponse = await fetch(`${rootUrl}/data/mainlist/_list.json`);
-    if (!listResponse.ok) throw new Error("No se pudo obtener el índice de la Main List.");
-    const levelFiles = await listResponse.json();
-
-    // Traemos todos los archivos JSON de los niveles en paralelo
-    const levelPromises = levelFiles.map(async (file) => {
-      try {
-        const res = await fetch(`${rootUrl}/data/mainlist/${file.trim()}.json`);
-        return res.ok ? await res.json() : null;
-      } catch { return null; }
-    });
-    
-    const loadedLevels = await Promise.all(levelPromises);
-    // Filtramos nulos y ordenamos por posición real en la lista (del revés para arrancar por los "más fáciles")
-    gameState.pool = loadedLevels.filter(l => l !== null).sort((a, b) => b.position - a.position);
-
-    if (gameState.pool.length === 0) {
-      container.innerHTML = `<div class="state-message"><p>No hay suficientes niveles en la Main List para jugar.</p></div>`;
-      return;
-    }
-
-    // Intentar recuperar partida guardada en localStorage
-    const saved = localStorage.getItem('gd_roulette_save');
-    if (saved) {
-      try { gameState = { ...gameState, ...JSON.parse(saved) }; } catch (e) { console.error(e); }
-    }
-
-    // 2. Pintar la interfaz base
-    updateUI(container);
-
-  } catch (err) {
+/* ── OBJETO DE EXPORTACIÓN (Para que app.js lo lea sin errores) ── */
+const roulettePage = {
+  async render(container) {
     container.innerHTML = `
-      <div class="state-message" style="color: #ff4545;">
-        <p style="font-family: var(--font-ui); font-size: 1.2rem; font-weight: bold;">⚠️ Error al inicializar la ruleta</p>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">${err.message}</p>
-      </div>`;
+      <div class="state-message">
+        <div class="spinner"></div>
+        <p style="margin-top:16px;">Preparando los engranajes de la ruleta...</p>
+      </div>
+    `;
+
+    try {
+      // 1. Cargamos el índice de niveles usando rutas relativas limpias
+      const listResponse = await fetch('data/levels/_list.json');
+      if (!listResponse.ok) throw new Error("No se pudo obtener el índice de niveles desde data/levels/_list.json");
+      const levelFiles = await listResponse.json();
+
+      // Traemos todos los archivos JSON de los niveles en paralelo
+      const levelPromises = levelFiles.map(async (file) => {
+        try {
+          const res = await fetch(`data/levels/${file.trim()}.json`);
+          return res.ok ? await res.json() : null;
+        } catch { return null; }
+      });
+      
+      const loadedLevels = await Promise.all(levelPromises);
+      
+      // Filtramos los challenges si tienen alguna propiedad que los identifique, o simplemente cargamos el pool
+      // Ordenamos por posición de reversa (para arrancar desde el más fácil, ej: #100 hacia el #1)
+      gameState.pool = loadedLevels
+        .filter(l => l !== null)
+        .sort((a, b) => b.position - a.position);
+
+      if (gameState.pool.length === 0) {
+        container.innerHTML = `<div class="state-message"><p>No hay suficientes niveles en la carpeta data/levels/ para jugar.</p></div>`;
+        return;
+      }
+
+      // Intentar recuperar partida guardada en localStorage
+      const saved = localStorage.getItem('gd_roulette_save');
+      if (saved) {
+        try { gameState = { ...gameState, ...JSON.parse(saved) }; } catch (e) { console.error(e); }
+      }
+
+      // 2. Pintar la interfaz base
+      updateUI(container);
+
+    } catch (err) {
+      container.innerHTML = `
+        <div class="state-message" style="color: #ff4545;">
+          <p style="font-family: var(--font-ui); font-size: 1.2rem; font-weight: bold;">⚠️ Error al inicializar la ruleta</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">${err.message}</p>
+        </div>`;
+    }
   }
-}
+};
 
 /* ── Actualizar la interfaz gráfica ─────────────────────────── */
 function updateUI(container) {
@@ -73,7 +76,7 @@ function updateUI(container) {
     container.innerHTML = `
       <div class="page-header animate-fadeIn">
         <h1 class="page-title"><span>Progressive</span> Roulette</h1>
-        <p class="page-subtitle">¿Hasta qué porcentaje podés sobrevivir escalando la Main List?</p>
+        <p class="page-subtitle">¿Hasta qué porcentaje podés sobrevivir escalando la lista?</p>
         <div class="page-title-bar"></div>
       </div>
 
@@ -82,10 +85,10 @@ function updateUI(container) {
           <span style="font-size: 3rem;">🎰</span>
           <h2 style="font-family: var(--font-ui); margin: 16px 0; color: var(--accent-primary);">Reglas del Desafío</h2>
           <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.6; text-align: left; margin-bottom: 24px;">
-            • Empezás en el nivel más bajo de la lista requiriendo un <strong>1%</strong>.<br>
+            • Empezás requiriendo un <strong>1%</strong> en el nivel más bajo.<br>
             • Cada acierto te sube la dificultad y te pide <strong>1% más</strong> en el siguiente nivel aleatorio.<br>
             • Tenés <strong>3 vidas</strong> en total. Perder una vida te permite volver a tirar en ese mismo porcentaje.<br>
-            • Disponés de <strong>2 Skips</strong> para pasar de un nivel que no te guste.
+            • Disponés de <strong>2 Skips</strong> para pasar de un nivel si se pone muy complicado.
           </p>
           
           <button id="start-roulette-btn" class="topbar-btn-cta" style="width: 100%; height: 48px; font-size: 1.1rem; box-shadow: var(--shadow-accent);">
@@ -148,7 +151,7 @@ function updateUI(container) {
 
         <div style="background: var(--bg-card); border: 2px solid var(--border-card); border-radius: var(--radius-lg); padding: 24px; text-align: center; box-shadow: var(--shadow-md); margin-bottom: 24px; position: relative;">
           <span style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: var(--radius-sm); font-family: var(--font-ui); font-size: 0.8rem; color: var(--text-secondary);">
-            Top #${lvl.position}
+            Top #${lvl.position || '??'}
           </span>
           
           <div style="width: 100%; max-width: 360px; aspect-ratio: 16/9; margin: 12px auto; border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05);">
@@ -156,7 +159,7 @@ function updateUI(container) {
           </div>
 
           <h2 style="font-family: var(--font-ui); font-size: 1.8rem; margin: 12px 0 4px; letter-spacing: 0.05em;">${escapeHTML(lvl.name)}</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 24px;">Por <strong>${escapeHTML(lvl.author)}</strong></p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 24px;">Por <strong>${escapeHTML(lvl.author || lvl.publisher)}</strong></p>
           
           <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
             <button id="btn-pass" class="topbar-btn-cta" style="height: 42px; padding: 0 24px; font-size: 0.95rem; background: var(--accent-primary); color: #080b12;">
@@ -275,3 +278,7 @@ function escapeHTML(str) {
   if (!str) return '';
   return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
+
+// EXPORTACIÓN FINAL COMPATIBLE CON APP.JS
+export default roulettePage;
+export { roulettePage as roulette };
