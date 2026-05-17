@@ -381,22 +381,21 @@ body::before {
   font-weight: 700;
 }
 
-/* ── 13. Level Card ─────────────────────────────────────────── */
-.level-list {
+/* ── 13. Level Card (Edición Compacta con Miniatura Grande) ──── */
+.list-grid {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: 10px; /* Separación justa entre tarjetas para evitar saturación */
 }
 
 .level-card {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
-  display: grid;
-  grid-template-columns: 52px 1fr auto;
+  display: flex;
   align-items: center;
-  gap: var(--space-md);
-  padding: var(--space-md);
+  gap: var(--space-lg); /* Espacio elegante entre la imagen y el texto */
+  padding: 10px var(--space-lg); /* Padding vertical bajo (10px) para hacerla fina */
   cursor: pointer;
   transition: all var(--transition-med);
   position: relative;
@@ -408,7 +407,7 @@ body::before {
   content: '';
   position: absolute;
   left: 0; top: 0; bottom: 0;
-  width: 3px;
+  width: 4px;
   background: var(--accent-primary);
   opacity: 0;
   transition: opacity var(--transition-fast);
@@ -425,99 +424,126 @@ body::before {
   opacity: 1;
 }
 
-/* Rank number */
-.level-rank {
+/* 🖼️ Miniatura: ¡Ahora más grande y en ratio 16:9! */
+.card-thumb-wrapper {
+  position: relative;
+  width: 145px; /* Tamaño ideal: se nota el arte del nivel sin comerse la pantalla */
+  aspect-ratio: 16 / 9; /* Formato cinemático idéntico a los videos */
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  flex-shrink: 0; /* Evita que la imagen se achique si el texto es largo */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.card-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* El número del Top flotando fino sobre la miniatura */
+.card-rank {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: rgba(8, 11, 18, 0.85);
+  backdrop-filter: blur(4px);
+  color: var(--text-primary);
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  color: var(--text-muted);
-  text-align: center;
-  width: 52px;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.level-rank.top3 {
-  color: var(--accent-gold);
-  font-size: 1.2rem;
-}
-
-/* Level info block */
-.level-info {
+/* Contenedor de datos alineado y compacto */
+.card-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  min-width: 0;
+  gap: 1px; /* Espaciado mínimo para mantener la tarjeta delgada */
+  min-width: 0; /* Evita desbordamientos de texto */
 }
 
-.level-name {
+.card-title {
   font-family: var(--font-ui);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.2;
 }
 
-.level-meta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  flex-wrap: wrap;
-}
-
-.level-creator,
-.level-verifier {
+.card-author {
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
 }
 
-.level-sep { color: var(--text-muted); font-size: 0.7rem; }
+.card-author strong { color: var(--text-primary); }
+.card-author em { color: var(--text-accent); font-style: normal; }
 
-.level-tags {
+/* Descripción recortada elegantemente en una sola línea si es muy larga */
+.card-description {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  margin-top: 2px;
+}
+
+/* Footer interno de la tarjeta */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+  gap: var(--space-md);
+}
+
+.points-badge {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  background: rgba(255, 183, 0, 0.06);
+  border: 1px solid rgba(255, 183, 0, 0.2);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.card-tags {
   display: flex;
   gap: 4px;
   flex-wrap: wrap;
-  margin-top: 4px;
 }
 
 .tag {
   font-family: var(--font-ui);
   font-size: 0.65rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 1px 7px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.06);
-  color: var(--text-muted);
-  border: 1px solid rgba(255,255,255,0.08);
+  padding: 1px 6px;
+  border-radius: 4px;
 }
 
-.tag.extreme  { color: #ff4444; border-color: rgba(255,68,68,0.3); background: rgba(255,68,68,0.08); }
-.tag.classic  { color: #f5a623; border-color: rgba(245,166,35,0.3); background: rgba(245,166,35,0.08); }
-.tag.deco     { color: #8b5cf6; border-color: rgba(139,92,246,0.3); background: rgba(139,92,246,0.08); }
-.tag.buffed   { color: #ef4444; border-color: rgba(239,68,68,0.3); background: rgba(239,68,68,0.08); }
-.tag.skill    { color: #3b82f6; border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.08); }
-.tag.silent   { color: #6b7280; border-color: rgba(107,114,128,0.3); background: rgba(107,114,128,0.08); }
-.tag.collab   { color: #10b981; border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.08); }
-
-/* Points badge */
-.level-points {
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--accent-gold);
-  white-space: nowrap;
-  text-align: right;
-}
-
-.level-points small {
-  display: block;
-  font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 400;
-  color: var(--text-muted);
+/* Ajuste responsivo para celulares */
+@media (max-width: 600px) {
+  .level-card {
+    gap: var(--space-md);
+    padding: 8px var(--space-md);
+  }
+  .card-thumb-wrapper {
+    width: 105px; /* Se adapta en pantallas chicas para no romper el layout */
+  }
+  .card-description {
+    display: none; /* Escondemos la descripción en celulares para conservar el diseño fino */
+  }
 }
 
 /* ── 14. Level Detail Panel ─────────────────────────────────── */
