@@ -1,42 +1,61 @@
 /**
- * pages/about.js — Módulo de la sección "Sobre Nosotros"
+ * pages/about.js — Módulo de la sección "Sobre Nosotros" (Versión de 3 Columnas)
  */
 
 export async function render(container) {
   container.innerHTML = `
     <div class="page-header animate-fadeIn">
       <h1 class="page-title"><span>Sobre</span> Nosotros</h1>
-      <p class="page-subtitle">Conocé la historia detrás de la lista, el staff y nuestra comunidad</p>
+      <p class="page-subtitle">Conocé la historia detrás de la lista, el equipo de trabajo y nuestra comunidad</p>
       <div class="page-title-bar"></div>
     </div>
 
-    <div style="max-width: 900px; margin: 40px auto; display: flex; flex-direction: column; gap: 32px;" class="animate-fadeIn">
+    <div style="max-width: 1000px; margin: 40px auto; display: flex; flex-direction: column; gap: 32px;" class="animate-fadeIn">
       
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
         
-        <div style="background: var(--bg-surface); border: 1px solid var(--border-card); padding: 24px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm); border-top: 3px solid var(--accent-primary);">
-          <div style="font-size: 3rem; margin-bottom: 12px;">👑</div>
-          <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[Nombre del Streamer]</h2>
-          <p style="color: var(--accent-primary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">Dueño & Streamer</p>
-          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
-            Creador del canal y propulsor principal de este proyecto. Encargado de los streams, la organización general y de manquear niveles en vivo.
-          </p>
-          <div style="display: flex; gap: 10px; justify-content: center;">
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-card); padding: 24px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm); border-top: 3px solid #ff4545; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="font-size: 3rem; margin-bottom: 12px;">🎥</div>
+            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[Nombre del Streamer]</h2>
+            <p style="color: #ff4545; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">Streamer & Dueño de Comunidad</p>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
+              La cara visible en directo y líder de la comunidad. Encargado de hostear las transmisiones, organizar los eventos en vivo, debatir posiciones con el chat y testear los niveles en tiempo real.
+            </p>
+          </div>
+          <div style="display: flex; gap: 10px; justify-content: center; margin-top: auto;">
             <a href="https://twitch.tv/#" target="_blank" style="color: #a970ff; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(169,112,255,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Twitch</a>
             <a href="https://youtube.com/#" target="_blank" style="color: #ff0000; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(255,0,0,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">YouTube</a>
           </div>
         </div>
 
-        <div style="background: var(--bg-surface); border: 1px solid var(--border-card); padding: 24px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm); border-top: 3px solid var(--accent-blue);">
-          <div style="font-size: 3rem; margin-bottom: 12px;">🛠️</div>
-          <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[Nombre del Editor]</h2>
-          <p style="color: var(--accent-blue); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">Editor de la Lista & Dev</p>
-          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
-            Mente técnica detrás del código, el diseño visual de la página y la constante actualización y verificación de los datos de los niveles.
-          </p>
-          <div style="display: flex; gap: 10px; justify-content: center;">
-            <a href="https://github.com/#" target="_blank" style="color: var(--text-primary); text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(255,255,255,0.05); padding: 6px 12px; border-radius: var(--radius-sm);">GitHub</a>
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-card); padding: 24px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm); border-top: 3px solid var(--accent-primary); display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="font-size: 3rem; margin-bottom: 12px;">👑</div>
+            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[Nombre del Creador]</h2>
+            <p style="color: var(--accent-primary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">Creador & Dueño de la Página</p>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
+              Fundador ideológico y dueño del sitio. Quien ideó la estructura original del proyecto y coordina las directrices generales junto con el streamer para expandir los límites de nuestra lista.
+            </p>
+          </div>
+          <div style="display: flex; gap: 10px; justify-content: center; margin-top: auto;">
             <a href="https://twitter.com/#" target="_blank" style="color: #1da1f2; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(29,161,242,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Twitter</a>
+            <a href="#" target="_blank" style="color: var(--accent-primary); text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(255,183,0,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Perfil</a>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-card); padding: 24px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm); border-top: 3px solid #3b82f6; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="font-size: 3rem; margin-bottom: 12px;">🛠️</div>
+            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[Nombre del Editor]</h2>
+            <p style="color: #3b82f6; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">Editor de la Lista & Dev</p>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
+              La mente detrás del código y las actualizaciones. Encargado de pulir los scripts, corregir errores técnicos de diseño, estructurar los JSON y añadir manualmente los nuevos niveles aceptados a las listas.
+            </p>
+          </div>
+          <div style="display: flex; gap: 10px; justify-content: center; margin-top: auto;">
+            <a href="https://github.com/#" target="_blank" style="color: var(--text-primary); text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(255,255,255,0.05); padding: 6px 12px; border-radius: var(--radius-sm);">GitHub</a>
+            <a href="#" target="_blank" style="color: #3b82f6; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(59,130,246,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Contacto</a>
           </div>
         </div>
 
