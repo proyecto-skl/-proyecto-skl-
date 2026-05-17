@@ -1,0 +1,12 @@
+{
+  "id": "news-001",
+  "title": "Welcome to the Demon List",
+  "slug": "welcome-to-the-demon-list",
+  "author": "Admin",
+  "date": "2024-01-01",
+  "category": "announcement",
+  "tags": ["welcome", "launch"],
+  "thumbnail": "",
+  "excerpt": "The Demon List is officially live! Read about our goals, structure, and how to get involved.",
+  "content": "Welcome to the **Demon List** — a community-driven ranking of the hardest Geometry Dash levels.\n\nOur goal is simple: maintain an accurate, transparent, and community-respected ranking of extreme demons and challenges.\n\n## What We Offer\n\n- **Main List** — The definitive ranking of extreme demons\n- **Challenge List** — Dedicated rankings for skill-based challenges\n- **Leaderboard** — Tracking top players and their completions\n- **News** — Official updates from the list team\n\n## How to Submit\n\nSubmissions are currently handled via our Discord server. Join the community and follow the submission guidelines pinned in the relevant channels.\n\nWe're excited to see your scores!"
+}
