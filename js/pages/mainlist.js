@@ -1,181 +1,81 @@
 /**
- * pages/mainlist.js — Main List page module
- *
- * Renders the ranked list of extreme demons from:
- *   data/levels/mainlist.json
- *
- * This module is ONLY responsible for the Main List.
- * It never reads from challengelist.json.
+ * mainlist.js — Módulo de la Lista Principal con carga dividida
  */
 
-import { fetchJSON, formatDate } from '../js/app.js';
-
-/* ── Data path ──────────────────────────────────────────────── */
-const DATA_URL = 'data/levels/mainlist.json';
-
-/* ── Main render function ───────────────────────────────────── */
 export async function render(container) {
-  let levels;
-
-  try {
-    levels = await fetchJSON(DATA_URL);
-  } catch (err) {
-    container.innerHTML = errorState('Could not load Main List data.', err.message);
-    return;
-  }
-
-  container.innerHTML = buildHTML(levels);
-
-  // Wire up card click → detail panel
-  container.querySelectorAll('.level-card').forEach((card, i) => {
-    card.addEventListener('click', () => openDetail(levels[i]));
-  });
-
-  // Detail overlay close
-  container.querySelector('.detail-overlay')?.addEventListener('click', e => {
-    if (e.target.classList.contains('detail-overlay')) closeDetail();
-  });
-
-  container.querySelector('.detail-close')?.addEventListener('click', closeDetail);
-}
-
-/* ── Build page HTML ────────────────────────────────────────── */
-function buildHTML(levels) {
-  return `
-    <div class="page-header">
-      <div class="page-header-inner">
-        <div>
-          <h1 class="page-title">Main <span>List</span></h1>
-          <p class="page-subtitle">The definitive ranking of the hardest Extreme Demons</p>
-          <div class="page-title-bar"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="stats-bar">
-      <div class="stat-pill">📋 <strong>${levels.length}</strong> levels ranked</div>
-      <div class="stat-pill">🔥 Top rated: <strong>${levels[0]?.name ?? '—'}</strong></div>
-      <div class="stat-pill">⭐ Max points: <strong>${levels[0]?.points ?? 0}</strong></div>
-    </div>
-
-    <div class="level-list" id="main-level-list">
-      ${levels.map((lvl, i) => levelCard(lvl, i)).join('')}
-    </div>
-
-    <!-- Detail panel (hidden by default) -->
-    <div class="detail-overlay" id="main-detail-overlay">
-      <div class="detail-panel" id="main-detail-panel">
-        <button class="detail-close" aria-label="Close">✕</button>
-        <div id="main-detail-content"></div>
-      </div>
+  // 1. Ponemos el cargando interino
+  container.innerHTML = `
+    <div class="state-message">
+      <div class="spinner"></div>
+      <p style="margin-top:16px;">Cargando niveles separados...</p>
     </div>
   `;
-}
 
-/* ── Level card template ────────────────────────────────────── */
-function levelCard(lvl, index) {
-  const isTop3 = lvl.rank <= 3;
-  const rankClass = isTop3 ? 'level-rank top3' : 'level-rank';
-  const stagger = `stagger-${Math.min(index + 1, 5)}`;
-  const tagsHTML = (lvl.tags ?? [])
-    .map(t => `<span class="tag ${t}">${t}</span>`)
-    .join('');
+  try {
+    // 2. Traemos el archivo índice de los niveles
+    const listResponse = await fetch('data/levels/_list.json');
+    if (!listResponse.ok) throw new Error('No se pudo cargar el índice de niveles (_list.json)');
+    const levelFiles = await listResponse.json();
 
-  return `
-    <div class="level-card ${stagger}" role="button" tabindex="0" aria-label="View ${lvl.name}">
-      <div class="${rankClass}">#${lvl.rank}</div>
-      <div class="level-info">
-        <div class="level-name">${escapeHTML(lvl.name)}</div>
-        <div class="level-meta">
-          <span class="level-creator">By ${escapeHTML(lvl.creator)}</span>
-          <span class="level-sep">·</span>
-          <span class="level-verifier">Ver. ${escapeHTML(lvl.verifier)}</span>
-        </div>
-        <div class="level-tags">${tagsHTML}</div>
+    // 3. Mapeamos y cargamos cada archivo JSON por separado al mismo tiempo
+    const levelPromises = levelFiles.map(async (fileName, index) => {
+      try {
+        const res = await fetch(`data/levels/${fileName.trim()}.json`);
+        if (!res.ok) return null;
+        const levelData = await res.json();
+        
+        // Le asignamos el top/rank automáticamente según su orden en la lista
+        return { ...levelData, rank: index + 1 };
+      } catch (err) {
+        console.error(`Error cargando el archivo de nivel: ${fileName}`, err);
+        return null;
+      }
+    });
+
+    const levels = await Promise.all(levelPromises);
+    // Filtramos por si algún archivo falló o tiró 404 para que no rompa la web
+    const activeLevels = levels.filter(l => l !== null);
+
+    if (activeLevels.length === 0) {
+      container.innerHTML = `<p class="state-message">No hay niveles disponibles en la lista.</p>`;
+      return;
+    }
+
+    // 4. Renderizamos las tarjetas con el diseño estético de la nueva plantilla
+    container.innerHTML = `
+      <div class="list-grid">
+        ${activeLevels.map(level => `
+          <div class="level-card">
+            <div class="card-thumb-wrapper">
+              <img 
+                src="${level.thumbnail || 'https://i.ytimg.com/vi/' + level.videoId + '/hqdefault.jpg'}" 
+                alt="${level.name}" 
+                class="card-thumb" 
+                loading="lazy" 
+              />
+              <span class="card-rank">#${level.rank}</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">${level.name}</h3>
+              <p class="card-author">Por <strong>${level.creator}</strong></p>
+              <p class="card-description">${level.description || 'Sin descripción disponible.'}</p>
+              <div class="card-footer">
+                <span class="points-badge">${level.points || 0} PTS</span>
+                <div class="card-tags">
+                  ${(level.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+        `).join('')}
       </div>
-      <div class="level-points">
-        ${lvl.points}
-        <small>points</small>
+    `;
+
+  } catch (error) {
+    container.innerHTML = `
+      <div class="state-message" style="color: var(--color-error, #f85149);">
+        <p>Hubo un error al estructurar la lista: ${error.message}</p>
       </div>
-    </div>`;
-}
-
-/* ── Detail panel ───────────────────────────────────────────── */
-function openDetail(lvl) {
-  const overlay  = document.getElementById('main-detail-overlay');
-  const content  = document.getElementById('main-detail-content');
-  if (!overlay || !content) return;
-
-  const tagsHTML = (lvl.tags ?? [])
-    .map(t => `<span class="tag ${t}">${t}</span>`)
-    .join(' ');
-
-  content.innerHTML = `
-    <div class="detail-video">
-      <iframe
-        src="https://www.youtube.com/embed/${lvl.videoId}"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        loading="lazy">
-      </iframe>
-    </div>
-    <div class="detail-body">
-      <div class="detail-rank-badge">Rank #${lvl.rank} — Main List</div>
-      <h2 class="detail-name">${escapeHTML(lvl.name)}</h2>
-      <div class="level-tags" style="margin-bottom:16px;">${tagsHTML}</div>
-      <div class="detail-meta-grid">
-        <div class="detail-meta-item">
-          <label>Creator</label>
-          <span>${escapeHTML(lvl.creator)}</span>
-        </div>
-        <div class="detail-meta-item">
-          <label>Verifier</label>
-          <span>${escapeHTML(lvl.verifier)}</span>
-        </div>
-        <div class="detail-meta-item">
-          <label>Level ID</label>
-          <span>${escapeHTML(lvl.id)}</span>
-        </div>
-        <div class="detail-meta-item">
-          <label>Points</label>
-          <span style="color:var(--accent-gold);font-family:var(--font-display)">${lvl.points}</span>
-        </div>
-        <div class="detail-meta-item">
-          <label>Difficulty</label>
-          <span>${escapeHTML(lvl.difficulty ?? 'Extreme Demon')}</span>
-        </div>
-        <div class="detail-meta-item">
-          <label>Date Added</label>
-          <span>${formatDate(lvl.dateAdded)}</span>
-        </div>
-      </div>
-      <p class="detail-description">${escapeHTML(lvl.description ?? '')}</p>
-    </div>`;
-
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeDetail() {
-  document.getElementById('main-detail-overlay')?.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-/* ── Helpers ────────────────────────────────────────────────── */
-function escapeHTML(str) {
-  if (!str) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
-function errorState(msg, detail = '') {
-  return `
-    <div class="state-message">
-      <div class="state-icon">😵</div>
-      <p>${msg}</p>
-      <p style="font-size:0.75rem;margin-top:8px;color:var(--text-muted)">${detail}</p>
-    </div>`;
+    `;
+  }
 }
