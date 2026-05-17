@@ -1,5 +1,5 @@
 /**
- * pages/roulette.js — Modulo de Ruleta Progresiva para la Main List
+ * pages/roulette.js — Módulo de Ruleta Progresiva para la Main List
  */
 
 /* ── State de la partida ────────────────────────────────────── */
@@ -13,8 +13,8 @@ let gameState = {
   pool: [] // Niveles cargados de la Main List
 };
 
-/* ── Render Principal ───────────────────────────────────────── */
-export async function render(container) {
+/* ── Render Principal (Exportación por Defecto Corregida) ───── */
+export default async function(container) {
   container.innerHTML = `
     <div class="state-message">
       <div class="spinner"></div>
@@ -239,18 +239,16 @@ function updateUI(container) {
 
 /* ── Buscar Siguiente Nivel Aleatorio Válido ────────────────── */
 function nextRoll() {
-  // Para evitar que te salgan niveles repetidos al hilo en la misma tirada
   const unrolled = gameState.pool.filter(level => {
     return !gameState.history.some(h => h.name === level.name && h.percent === gameState.currentPercent);
   });
 
-  // Si por alguna razón se vacía, usamos el pool general
   const sources = unrolled.length > 0 ? unrolled : gameState.pool;
   const randomIndex = Math.floor(Math.random() * sources.length);
   gameState.currentLevel = sources[randomIndex];
 }
 
-/* ── Helpers del LocalStorage y Sanatizado ──────────────────── */
+/* ── Helpers del LocalStorage y Sanitizado ──────────────────── */
 function saveGame() {
   localStorage.setItem('gd_roulette_save', JSON.stringify({
     currentPercent: gameState.currentPercent,
@@ -261,6 +259,7 @@ function saveGame() {
   }));
 }
 
+/* ── Resetear Juego ─────────────────────────────────────────── */
 function resetGame() {
   localStorage.removeItem('gd_roulette_save');
   gameState.active = false;
@@ -271,6 +270,7 @@ function resetGame() {
   gameState.currentLevel = null;
 }
 
+/* ── Escape HTML Helper ─────────────────────────────────────── */
 function escapeHTML(str) {
   if (!str) return '';
   return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
