@@ -20,6 +20,7 @@ const ROUTES = {
   'challenges' : () => loadPage('challenges'),
   'leaderboard': () => loadPage('leaderboard'),
   'news'       : () => loadPage('news'),
+  'roulette'   : () => loadPage('roulette'),
 };
 
 /**
