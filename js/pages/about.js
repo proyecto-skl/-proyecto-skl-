@@ -18,43 +18,43 @@ export async function render(container) {
           <div>
             <div style="font-size: 3rem; margin-bottom: 12px;">🎥</div>
             <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[-Shiku08-]</h2>
-            <p style="color: #ff4545; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">Streamer & Dueño de Comunidad</p>
+            <p style="color: #ff4545; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">Streamer y Dueño de la Comunidad</p>
             <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
-              La cara visible en directo y líder de la comunidad. Encargado de hostear las transmisiones, organizar los eventos en vivo, debatir posiciones con el chat y testear los niveles en tiempo real.
+              La cara visible en directo y líder de la comunidad. Una persona muy buena, agradable y carismatica, organiza los eventos en vivo junto a sus moderadores Sharno y Hank, discutir y manda a la mierda el chat, testea los niveles en tiempo real aunque le da flojera pasarselos, se lo aprecia un monton.
             </p>
           </div>
           <div style="display: flex; gap: 10px; justify-content: center; margin-top: auto;">
-            <a href="https://www.twitch.tv/shiku_08" target="_blank" style="color: #a970ff; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(169,112,255,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Twitch</a>
-            <a href="https://www.youtube.com/@shiku08" target="_blank" style="color: #ff0000; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(255,0,0,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">YouTube</a>
+            <a href="https://www.twitch.tv/shiku08" target="_blank" style="color: #a970ff; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(169,112,255,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Twitch</a>
+            <a href="https://www.youtube.com/@elshiku" target="_blank" style="color: #ff0000; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(255,0,0,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">YouTube</a>
           </div>
         </div>
 
         <div style="background: var(--bg-surface); border: 1px solid var(--border-card); padding: 24px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm); border-top: 3px solid var(--accent-primary); display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div style="font-size: 3rem; margin-bottom: 12px;">👑</div>
-            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[Tomi-Dev]</h2>
-            <p style="color: var(--accent-primary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">Creador & Dueño de la Página</p>
+            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[-Hanky_rawr-]</h2>
+            <p style="color: var(--accent-primary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">Creador y Dueño de la Página</p>
             <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
-              Fundador ideológico y dueño del sitio. Quien ideó la estructura original del proyecto y coordina las directrices generales junto con el streamer para expandir los límites de nuestra lista.
+              Fundador de la lista (Idea robada de Krinsi y Kepta :v). Encargado de la programacion, organizacion y diseño de la pagina entera.
             </p>
           </div>
           <div style="display: flex; gap: 10px; justify-content: center; margin-top: auto;">
-            <a href="https://x.com/TomiDev05" target="_blank" style="color: #1da1f2; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(29,161,242,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Twitter</a>
-            <a href="https://discord.com/users/831633519391014942" target="_blank" style="color: #5865f2; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(88,101,242,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Discord</a>
+            <a href="https://x.com/Hanky_rawr" target="_blank" style="color: #1da1f2; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(29,161,242,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Twitter</a>
+            <a href="https://discord.com/users/747521545106096250" target="_blank" style="color: #5865f2; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(88,101,242,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Discord</a>
           </div>
         </div>
 
         <div style="background: var(--bg-surface); border: 1px solid var(--border-card); padding: 24px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm); border-top: 3px solid #3b82f6; display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div style="font-size: 3rem; margin-bottom: 12px;">🛠️</div>
-            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[Migroks]</h2>
+            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[-Vargas-]</h2>
             <p style="color: #3b82f6; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">Editor de la Lista & Dev</p>
             <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
-              La mente detrás del código y las actualizaciones. Encargado de pulir los scripts, corregir errores técnicos de diseño, estructurar los JSON y añadir manualmente los nuevos niveles aceptados a las listas.
+              Editor directo de la pagina, encargado de meter, eliminar y editar tanto records como niveles y challenges.
             </p>
           </div>
           <div style="display: flex; justify-content: center; margin-top: auto;">
-            <a href="https://discord.com/users/717831086052048957" target="_blank" style="color: #5865f2; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(88,101,242,0.1); padding: 6px 24px; border-radius: var(--radius-sm);">Discord</a>
+            <a href="https://discord.com/users/1138994453726646365" target="_blank" style="color: #5865f2; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(88,101,242,0.1); padding: 6px 24px; border-radius: var(--radius-sm);">Discord</a>
           </div>
         </div>
 
@@ -65,32 +65,32 @@ export async function render(container) {
         <div style="background: var(--bg-surface); border: 1px solid var(--border-card); padding: 24px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm); border-top: 3px solid #a970ff; display: flex; flex-direction: column; justify-content: space-between; flex: 1 1 280px; max-width: 320px;">
           <div>
             <div style="font-size: 3rem; margin-bottom: 12px;">💡</div>
-            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[Nombre]</h2>
+            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[Kepta]</h2>
             <p style="color: #a970ff; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">el que dio la idea</p>
             <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
-              Texto de ejemplo para describir los aportes, comentarios o sugerencias iniciales brindadas por esta persona para el desarrollo del proyecto.
+              Gracias a esta persona nació la idea de tener una lista ya que el junto a SU comunidad tienen una y decidimos inspirarnos de ellos, se te quiere mucho kepta :).
             </p>
           </div>
           <div style="display: flex; gap: 10px; justify-content: center; margin-top: auto;">
-            <a href="https://youtube.com/#" target="_blank" style="color: #ff0000; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(255,0,0,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">YouTube</a>
-            <a href="https://twitch.tv/#" target="_blank" style="color: #a970ff; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(169,112,255,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Twitch</a>
-            <a href="https://discord.com/#" target="_blank" style="color: #5865f2; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(88,101,242,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Discord</a>
+            <a href="https://www.youtube.com/@Kepta-BB" target="_blank" style="color: #ff0000; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(255,0,0,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">YouTube</a>
+            <a href="https://www.twitch.tv/kepta_bb" target="_blank" style="color: #a970ff; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(169,112,255,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Twitch</a>
+            <a href="https://discord.com/users/1298779469955207221" target="_blank" style="color: #5865f2; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(88,101,242,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Discord</a>
           </div>
         </div>
 
         <div style="background: var(--bg-surface); border: 1px solid var(--border-card); padding: 24px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm); border-top: 3px solid #06b6d4; display: flex; flex-direction: column; justify-content: space-between; flex: 1 1 280px; max-width: 320px;">
           <div>
             <div style="font-size: 3rem; margin-bottom: 12px;">✨</div>
-            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[Nombre]</h2>
+            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[Krinsi]</h2>
             <p style="color: #06b6d4; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">el que creó la primer idea</p>
             <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
-              Texto de ejemplo para detallar la conceptualización primaria, el prototipo o la inspiración original que dio inicio a esta lista comunitaria.
+              Krinsi, otro BUEN moderador de Shiku, el que armó la primera lista en un Exel el cual llegó hasta lo que es esta pagina ahora.
             </p>
           </div>
           <div style="display: flex; gap: 10px; justify-content: center; margin-top: auto;">
-            <a href="https://youtube.com/#" target="_blank" style="color: #ff0000; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(255,0,0,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">YouTube</a>
-            <a href="https://x.com/#" target="_blank" style="color: #1da1f2; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(29,161,242,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Twitter</a>
-            <a href="https://discord.com/#" target="_blank" style="color: #5865f2; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(88,101,242,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Discord</a>
+            <a href="https://www.youtube.com/@krinsiw" target="_blank" style="color: #ff0000; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(255,0,0,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">YouTube</a>
+            <a href="https://x.com/Krinsiw" target="_blank" style="color: #1da1f2; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(29,161,242,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Twitter</a>
+            <a href="https://discord.com/users/480959698347098113" target="_blank" style="color: #5865f2; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(88,101,242,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Discord</a>
           </div>
         </div>
 
