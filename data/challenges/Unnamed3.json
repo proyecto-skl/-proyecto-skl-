@@ -1,0 +1,18 @@
+{
+    "id": 140532416,
+    "name": "Unnamed 3",
+    "author": "Vargas",
+    "creators": ["Vargas"],
+    "verifier": "Vargas",
+    "verification": "https://www.youtube.com/watch?v=mPNAAGJHhAs",
+    "percentToQualify": "100",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "Vargas",
+            "link": "https://www.youtube.com/watch?v=mPNAAGJHhAs",
+            "percent": 100,
+            "hz": 240
+        }
+    ]
+}
