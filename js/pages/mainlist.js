@@ -1,5 +1,5 @@
 /**
- * mainlist.js — Módulo de la Lista Principal optimizado para GitHub Pages
+ * mainlist.js — Módulo de la Lista Principal adaptado a la jerarquía de tus JSON
  */
 
 export async function render(container) {
@@ -11,34 +11,51 @@ export async function render(container) {
   `;
 
   try {
-    // 1. Buscamos de forma segura la raíz de la app sin romper los nombres de repositorios con guiones
+    // 1. Buscamos de forma segura la raíz de la app en GitHub Pages / Local
     const loc = window.location;
     const rootUrl = loc.protocol + '//' + loc.host + loc.pathname.replace(/\/js\/pages\/.*$/, '').replace(/\/index\.html$/, '').replace(/\/$/, '');
 
-    // 2. Traemos el índice general de niveles usando la ruta absoluta limpia
+    // 2. Traemos el índice general de niveles (_list.json)
     const listResponse = await fetch(`${rootUrl}/data/levels/_list.json`);
     if (!listResponse.ok) {
-      throw new Error(`Error ${listResponse.status}: No se encontró el archivo _list.json en: ${rootUrl}/data/levels/_list.json`);
+      throw new Error(`Error ${listResponse.status}: No se encontró el archivo _list.json`);
     }
     const levelFiles = await listResponse.json();
 
-    // 3. Cargamos cada archivo JSON de nivel de forma individual en paralelo
+    // 3. Cargamos cada archivo JSON adaptando su estructura internamente
     const levelPromises = levelFiles.map(async (fileName, index) => {
       try {
         const res = await fetch(`${rootUrl}/data/levels/${fileName.trim()}.json`);
         if (!res.ok) return null;
-        const levelData = await res.json();
+        const oldData = await res.json();
         
-        // Asignamos el top/rank automáticamente según su orden en el array
-        return { ...levelData, rank: index + 1 };
+        // Extraemos el ID del video de YouTube desde el link de verificación viejo
+        let videoId = 'dQw4w9WgXcQ'; // Video por defecto si no hay
+        if (oldData.verification && oldData.verification.includes('v=')) {
+          videoId = oldData.verification.split('v=')[1].split('&')[0];
+        } else if (oldData.verification && oldData.verification.includes('youtu.be/')) {
+          videoId = oldData.verification.split('youtu.be/')[1].split('?')[0];
+        }
+
+        // Traducimos los datos viejos al formato que requiere la nueva plantilla
+        return {
+          rank: index + 1,
+          name: oldData.name || 'Sin nombre',
+          creator: oldData.author || (oldData.creators ? oldData.creators.join(', ') : 'Desconocido'),
+          verifier: oldData.verifier || 'Desconocido',
+          videoId: videoId,
+          thumbnail: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+          points: Math.max(100, 1000 - (index * 5)), // Cálculo automático de puntos por posición
+          description: `ID del nivel: ${oldData.id || 'N/A'}. Requiere un ${oldData.percentToQualify || '100'}% para clasificar.`,
+          tags: oldData.password ? [`🔑 ${oldData.password}`] : []
+        };
       } catch (err) {
-        console.error(`Error cargando el archivo del nivel: ${fileName}`, err);
+        console.error(`Error procesando el archivo: ${fileName}`, err);
         return null;
       }
     });
 
     const levels = await Promise.all(levelPromises);
-    // Filtramos los niveles que no se pudieron cargar (por si hay un 404 en alguno)
     const activeLevels = levels.filter(l => l !== null);
 
     if (activeLevels.length === 0) {
@@ -46,14 +63,14 @@ export async function render(container) {
       return;
     }
 
-    // 4. Renderizamos las tarjetas con el diseño estético de tu plantilla
+    // 4. Renderizamos las tarjetas con el diseño estético usando los datos mapeados
     container.innerHTML = `
       <div class="list-grid">
         ${activeLevels.map(level => `
           <div class="level-card">
             <div class="card-thumb-wrapper">
               <img 
-                src="${level.thumbnail || 'https://i.ytimg.com/vi/' + level.videoId + '/hqdefault.jpg'}" 
+                src="${level.thumbnail}" 
                 alt="${level.name}" 
                 class="card-thumb" 
                 loading="lazy" 
@@ -62,12 +79,12 @@ export async function render(container) {
             </div>
             <div class="card-content">
               <h3 class="card-title">${level.name}</h3>
-              <p class="card-author">Por <strong>${level.creator}</strong></p>
-              <p class="card-description">${level.description || 'Sin descripción disponible.'}</p>
+              <p class="card-author">Por <strong>${level.creator}</strong> | Verificado por: <em>${level.verifier}</em></p>
+              <p class="card-description">${level.description}</p>
               <div class="card-footer">
-                <span class="points-badge">${level.points || 0} PTS</span>
+                <span class="points-badge">${level.points} PTS</span>
                 <div class="card-tags">
-                  ${(level.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('')}
+                  ${level.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                 </div>
               </div>
             </div>
@@ -78,11 +95,8 @@ export async function render(container) {
 
   } catch (error) {
     container.innerHTML = `
-      <div class="state-message" style="color: var(--color-error, #f85149); padding: 20px; text-align: left;">
+      <div class="state-message" style="color: var(--color-error, #f85149); padding: 20px;">
         <p>⚠️ Hubo un error al estructurar la lista: ${error.message}</p>
-        <p style="font-size: 13px; margin-top: 10px; opacity: 0.8;">
-          Asegurate de subir los cambios a tu repositorio de GitHub para que existan las carpetas correspondientes.
-        </p>
       </div>
     `;
   }
