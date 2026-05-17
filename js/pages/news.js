@@ -2,7 +2,7 @@
  * pages/news.js — News & Blog page module con carga dinámica dividida
  */
 
-import { simpleMarkdown, formatDate } from '../js/app.js';
+import { simpleMarkdown, formatDate } from '../app.js';
 
 /* ── State ──────────────────────────────────────────────────── */
 let allPosts   = [];
@@ -10,15 +10,16 @@ let activePost = null;
 
 /* ── Main render function ───────────────────────────────────── */
 export async function render(container) {
-  // Estado de carga inicial
+  // Estado de carga inicial limpio sin caracteres de escape rotos
   container.innerHTML = `
-    <div class=\"state-message\">
-      <div class=\"spinner\"></div>\n      <p style=\"margin-top:16px;\">Cargando noticias y anuncios...</p>
+    <div class="state-message">
+      <div class="spinner"></div>
+      <p style="margin-top:16px;">Cargando noticias y anuncios...</p>
     </div>
   `;
 
   try {
-    // 1. Buscamos de forma segura la raíz de la aplicación para evitar fallos de red
+    // 1. Buscamos de forma segura la raíz de la aplicación para evitar fallos de red en GitHub Pages
     const loc = window.location;
     const rootUrl = loc.protocol + '//' + loc.host + loc.pathname.replace(/\/(js\/pages|pages)\/.*$/, '').replace(/\/index\.html$/, '').replace(/\/$/, '');
 
@@ -46,7 +47,7 @@ export async function render(container) {
     allPosts = posts.filter(p => p !== null);
 
     if (allPosts.length === 0) {
-      container.innerHTML = `<div class=\"state-message\"><p>No hay noticias publicadas en este momento.</p></div>`;
+      container.innerHTML = `<div class="state-message"><p>No hay noticias publicadas en este momento.</p></div>`;
       return;
     }
 
@@ -89,7 +90,8 @@ function buildHTML(posts) {
       <div class="page-header">
         <div class="page-header-inner">
           <div>
-            <h1 class="page-title"><span>News</span> & Updates</h1>\n            <p class="page-subtitle">Official announcements, list updates, and community logs</p>
+            <h1 class="page-title"><span>News</span> & Updates</h1>
+            <p class="page-subtitle">Official announcements, list updates, and community logs</p>
             <div class="page-title-bar"></div>
           </div>
         </div>
@@ -99,7 +101,7 @@ function buildHTML(posts) {
         ${cardsHTML}
       </div>
     </div>
-    <div id="news-post-view" class="post-article-view"></div>
+    <div id="news-post-view" class="post-article-view" style="display: none;"></div>
   `;
 }
 
