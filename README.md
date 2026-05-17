@@ -59,7 +59,6 @@ Proyecto creado principalmente para la comunidad hispanohablante de Geometry Das
 
 ## 📷 Capturas
 
-> Aquí puedes añadir imágenes o gifs de la página.
 
 ```md
 ![preview](ruta-imagen)
