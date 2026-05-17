@@ -32,7 +32,7 @@ export async function render(container) {
         <div style="background: var(--bg-surface); border: 1px solid var(--border-card); padding: 24px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm); border-top: 3px solid var(--accent-primary); display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div style="font-size: 3rem; margin-bottom: 12px;">👑</div>
-            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[-Hanky_rawr-]</h2>
+            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">Hanky_rawr</h2>
             <p style="color: var(--accent-primary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">Creador y Dueño de la Página</p>
             <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
               Fundador de la lista (Idea robada de Krinsi y Kepta :v). Encargado de la programacion, organizacion y diseño de la pagina entera.
@@ -47,7 +47,7 @@ export async function render(container) {
         <div style="background: var(--bg-surface); border: 1px solid var(--border-card); padding: 24px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm); border-top: 3px solid #3b82f6; display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div style="font-size: 3rem; margin-bottom: 12px;">🛠️</div>
-            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[-Vargas-]</h2>
+            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">Vargas</h2>
             <p style="color: #3b82f6; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">Editor de la Lista & Dev</p>
             <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
               Editor directo de la pagina, encargado de meter, eliminar y editar tanto records como niveles y challenges.
@@ -65,7 +65,7 @@ export async function render(container) {
         <div style="background: var(--bg-surface); border: 1px solid var(--border-card); padding: 24px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm); border-top: 3px solid #a970ff; display: flex; flex-direction: column; justify-content: space-between; flex: 1 1 280px; max-width: 320px;">
           <div>
             <div style="font-size: 3rem; margin-bottom: 12px;">💡</div>
-            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[Kepta]</h2>
+            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">Kepta</h2>
             <p style="color: #a970ff; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">el que dio la idea</p>
             <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
               Gracias a esta persona nació la idea de tener una lista ya que el junto a SU comunidad tienen una y decidimos inspirarnos de ellos, se te quiere mucho kepta :).
@@ -81,7 +81,7 @@ export async function render(container) {
         <div style="background: var(--bg-surface); border: 1px solid var(--border-card); padding: 24px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm); border-top: 3px solid #06b6d4; display: flex; flex-direction: column; justify-content: space-between; flex: 1 1 280px; max-width: 320px;">
           <div>
             <div style="font-size: 3rem; margin-bottom: 12px;">✨</div>
-            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[Krinsi]</h2>
+            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">Krinsi</h2>
             <p style="color: #06b6d4; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">el que creó la primer idea</p>
             <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
               Krinsi, otro BUEN moderador de Shiku, el que armó la primera lista en un Exel el cual llegó hasta lo que es esta pagina ahora.
