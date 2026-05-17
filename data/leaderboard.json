@@ -1,0 +1,72 @@
+[
+  {
+    "rank": 1,
+    "name": "Exen",
+    "country": "US",
+    "countryFlag": "🇺🇸",
+    "totalPoints": 4850,
+    "completions": 12,
+    "verifications": 3,
+    "avatar": "",
+    "socials": {
+      "youtube": "https://youtube.com",
+      "twitch": ""
+    }
+  },
+  {
+    "rank": 2,
+    "name": "Trick",
+    "country": "SE",
+    "countryFlag": "🇸🇪",
+    "totalPoints": 4620,
+    "completions": 10,
+    "verifications": 2,
+    "avatar": "",
+    "socials": {
+      "youtube": "https://youtube.com",
+      "twitch": "https://twitch.tv"
+    }
+  },
+  {
+    "rank": 3,
+    "name": "TriAxis",
+    "country": "AU",
+    "countryFlag": "🇦🇺",
+    "totalPoints": 4400,
+    "completions": 9,
+    "verifications": 5,
+    "avatar": "",
+    "socials": {
+      "youtube": "https://youtube.com",
+      "twitch": ""
+    }
+  },
+  {
+    "rank": 4,
+    "name": "Sunix",
+    "country": "DE",
+    "countryFlag": "🇩🇪",
+    "totalPoints": 4100,
+    "completions": 8,
+    "verifications": 1,
+    "avatar": "",
+    "socials": {
+      "youtube": "https://youtube.com",
+      "twitch": "https://twitch.tv"
+    }
+  },
+  {
+    "rank": 5,
+    "name": "Dolimi",
+    "country": "KR",
+    "countryFlag": "🇰🇷",
+    "totalPoints": 3900,
+    "completions": 7,
+    "verifications": 4,
+    "avatar": "",
+    "socials": {
+      "youtube": "https://youtube.com",
+      "twitch": ""
+    }
+  }
+]
