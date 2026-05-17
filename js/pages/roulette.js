@@ -13,8 +13,8 @@ let gameState = {
   pool: [] // Niveles cargados de la Main List
 };
 
-/* ── Render Principal (Exportación por Defecto Corregida) ───── */
-export default async function(container) {
+/* ── Función Principal de Renderizado (Nombrada para app.js) ── */
+export async function render(container) {
   container.innerHTML = `
     <div class="state-message">
       <div class="spinner"></div>
