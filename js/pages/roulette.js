@@ -1,5 +1,5 @@
 /**
- * pages/roulette.js — Módulo de Ruleta Progresiva para data/levels/
+ * pages/roulette.js — Módulo de Ruleta Progresiva
  */
 
 /* ── State de la partida ────────────────────────────────────── */
@@ -13,7 +13,7 @@ let gameState = {
   pool: [] // Niveles cargados desde data/levels/
 };
 
-/* ── FUNCIÓN PRINCIPAL DE RENDERIZADO NOMBRADA ──────────────── */
+/* ── FUNCIÓN PRINCIPAL (Export nombrado que busca tu app.js) ── */
 export async function render(container) {
   container.innerHTML = `
     <div class="state-message">
@@ -23,9 +23,9 @@ export async function render(container) {
   `;
 
   try {
-    // 1. Cargamos el índice de niveles desde la carpeta de niveles generales
+    // 1. Cargamos el índice de niveles desde data/levels/
     const listResponse = await fetch('data/levels/_list.json');
-    if (!listResponse.ok) throw new Error("No se pudo obtener el índice desde data/levels/_list.json");
+    if (!listResponse.ok) throw new Error("No se pudo obtener el índice de niveles desde data/levels/_list.json");
     const levelFiles = await listResponse.json();
 
     // Traemos todos los archivos JSON de los niveles en paralelo
@@ -38,13 +38,13 @@ export async function render(container) {
     
     const loadedLevels = await Promise.all(levelPromises);
     
-    // Filtramos los niveles válidos y los ordenamos al revés (para arrancar por los "más fáciles" según posición)
+    // Filtramos nulos y ordenamos por posición (del revés para arrancar por los más fáciles)
     gameState.pool = loadedLevels
       .filter(l => l !== null)
       .sort((a, b) => b.position - a.position);
 
     if (gameState.pool.length === 0) {
-      container.innerHTML = `<div class="state-message"><p>No hay suficientes niveles en data/levels/ para jugar.</p></div>`;
+      container.innerHTML = `<div class="state-message"><p>No hay suficientes niveles en la carpeta data/levels/ para jugar.</p></div>`;
       return;
     }
 
@@ -125,6 +125,7 @@ function updateUI(container) {
     const lvl = gameState.currentLevel;
     const thumbnail = lvl.thumbnail || 'https://img.youtube.com/vi/placeholder/mqdefault.jpg';
     
+    // Renderizamos los corazones visuales de vidas
     const hearts = Array(3).fill(0).map((_, i) => i < gameState.lives ? '❤️' : '🖤').join(' ');
 
     container.innerHTML = `
@@ -212,7 +213,7 @@ function updateUI(container) {
         alert(`💀 ¡Game Over! Te quedaste sin vidas en el ${gameState.currentPercent}%. Buen intento.`);
         resetGame();
       } else {
-        nextRoll();
+        nextRoll(); // Cambia de nivel para el mismo porcentaje
       }
       saveGame();
       updateUI(container);
