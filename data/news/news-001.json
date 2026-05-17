@@ -1,12 +1,12 @@
 {
   "id": "news-001",
-  "title": "Welcome to the Demon List",
+  "title": "Bienvenido al Proyecto-SKL",
   "slug": "welcome-to-the-demon-list",
-  "author": "Admin",
-  "date": "2024-01-01",
+  "author": "Hanky_rawr",
+  "date": "2026-17-05",
   "category": "announcement",
-  "tags": ["welcome", "launch"],
+  "tags": ["Bienvenida", "Iniciar","Holis :3"],
   "thumbnail": "",
-  "excerpt": "The Demon List is officially live! Read about our goals, structure, and how to get involved.",
-  "content": "Welcome to the **Demon List** — a community-driven ranking of the hardest Geometry Dash levels.\n\nOur goal is simple: maintain an accurate, transparent, and community-respected ranking of extreme demons and challenges.\n\n## What We Offer\n\n- **Main List** — The definitive ranking of extreme demons\n- **Challenge List** — Dedicated rankings for skill-based challenges\n- **Leaderboard** — Tracking top players and their completions\n- **News** — Official updates from the list team\n\n## How to Submit\n\nSubmissions are currently handled via our Discord server. Join the community and follow the submission guidelines pinned in the relevant channels.\n\nWe're excited to see your scores!"
+  "excerpt": "Informacion basica de la pagina.",
+  "content": "Bienvenido al **Proyecto-SKL** \u2014 una clasificacion de Hardest, Challenges y demas que se ha pasado o creado la comunidad de Shiku08!\r\n\r\nEl objetivo de esta lista es recopilar los Hardest de cada persona que est\u00E1 en la comunidad de Shiku, a parte de tener un apartado exclusivo de Challenges en donde la comunidad puede crear y subir sus retos a esta pagina! \r\n\r\n\r\n## Que ofrece la pagina?\r\n\r\n- **Main List** \u2014 Donde se encontrar\u00E1n los extremes que se ha pasado las personas de la comunidad!\r\n- **Challenge List** \u2014 Apartado dedicado a subir challenges que crean los jugadores de dicha comunidad\r\n- **Leaderboard** \u2014 Apartado en donde podr\u00E1s consultar la tabla de clasificaci\u00F3n de los jugadores y saber en que top est\u00E1n cada uno!\r\n- **News** \u2014 Apartado oficial en donde se publicar\u00E1n novedades y anuncios que pasan en la comunidad\r\n\r\n## Como subir un record?\r\n\r\nMuy simple! solo dale al boton de subir record que encontrar\u00E1s en la parte superior junto al buscador y el bot\u00F3n de discord, por cierto, unete a la comunidad si aun no est\u00E1s\r\n\r\nVeamos que tan lejos llega este peque\u00F1o proyecto!"
 }
