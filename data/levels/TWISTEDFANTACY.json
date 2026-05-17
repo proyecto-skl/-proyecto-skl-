@@ -1,0 +1,18 @@
+{
+    "id": 65412304,
+    "name": "Twisted Fatntacy",
+    "author": "ToastLord",
+    "creators": ["ToastLord"],
+    "verifier": "ToastLord",
+    "verification": "https://www.youtube.com/watch?v=wysA68gYCqw",
+    "percentToQualify": "48",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "contx",
+            "link": " ",
+            "percent": 100,
+            "hz": 0
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "id": 7174110,
+    "name": "The Ultimate Phase",
+    "author": "Andromeda",
+    "creators": ["Andromeda, ZenthicAlpha, Crack and more"],
+    "verifier": "Andromeda",
+    "verification": "https://www.youtube.com/watch?v=m7luNzmwXhY",
+    "percentToQualify": "48",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "Shiku",
+            "link": "https://www.youtube.com/watch?v=NkFuOK35kFE",
+            "percent": 100,
+            "hz": 0
+        },
+       {
+            "user": "Vargas",
+            "link": " ",
+            "percent": 100,
+            "hz": 240
+        },
+       {
+            "user": "Toxic",
+            "link": " ",
+            "percent": 100,
+            "hz": 240
+        }
+    ]
+}

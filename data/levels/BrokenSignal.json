@@ -1,0 +1,18 @@
+{
+    "id": 69108628,
+    "name": "Broken Signal",
+    "author": "Grax",
+    "creators": ["Grax"],
+    "verifier": "Grax",
+    "verification": "",
+    "percentToQualify": "50",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "Toxic",
+            "link": "https://www.youtube.com/watch?v=XGyHhjhtKjE",
+            "percent": 100,
+            "hz": 0
+        }
+    ]
+}

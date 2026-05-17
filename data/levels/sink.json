@@ -1,0 +1,18 @@
+{
+    "id": 77255632,
+    "name": "Sink",
+    "author": "Awedsy",
+    "creators": ["Awedsy"],
+    "verifier": "nac",
+    "verification": "https://www.youtube.com/watch?v=cnba1oJrbVQ",
+    "percentToQualify": "48",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "xReizer",
+            "link": "https://www.youtube.com/watch?v=_INV-2AlK8k",
+            "percent": 100,
+            "hz": 0
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "id": 68600127,
+    "name": "Silent Club",
+    "author": "Luqualizer",
+    "creators": ["BlackP2sFull"],
+    "verifier": "Luqualizer",
+    "verification": "https://www.youtube.com/watch?v=yNHt6J7zyJc",
+    "percentToQualify": "48",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "Vargas",
+            "link": "",
+            "percent": 100,
+            "hz": 0
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "id": 107341811,
+    "name": "Prismatic",
+    "author": "CatGeo",
+    "creators": ["CatGeo"],
+    "verifier": "CatGeo",
+    "verification": "https://www.youtube.com/watch?v=H-mwJ3w9oLI",
+    "percentToQualify": "48",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "Rex",
+            "link": " ",
+            "percent": 100,
+            "hz": 0
+        },
+        {
+            "user": "Shiku",
+            "link": " ",
+            "percent": 59,
+            "hz": 0
+        }
+    ]
+}

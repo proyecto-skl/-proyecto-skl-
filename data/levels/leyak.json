@@ -1,0 +1,18 @@
+{
+    "id": 61137742,
+    "name": "Leyak",
+    "author": "EnZore",
+    "creators": ["EnZore"],
+    "verifier": "EnZore",
+    "verification": "https://www.youtube.com/watch?v=VNKRtwc1PMM",
+    "percentToQualify": "48",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "IHankyI",
+            "link": "https://www.youtube.com/watch?v=-kI5YMVh5Yo",
+            "percent": 100,
+            "hz": 60
+        }
+    ]
+}

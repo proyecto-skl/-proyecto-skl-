@@ -1,0 +1,18 @@
+{
+    "id": 25610878,
+    "name": "aftermath",
+    "author": "Exenity",
+    "creators": ["knobbelboy, Exenity, Squizz and more"],
+    "verifier": "DaMeister",
+    "verification": "https://www.youtube.com/watch?v=iLCcJyh5c5k",
+    "percentToQualify": "48",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "OldKeptaBB",
+            "link": "https://www.youtube.com/watch?v=_ZA08m4FxTs",
+            "percent": 100,
+            "hz": 0
+        }
+    ]
+}

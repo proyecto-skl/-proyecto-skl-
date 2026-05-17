@@ -1,0 +1,24 @@
+{
+    "id": 38235367,
+    "name": "Quantum Processing",
+    "author": "Riot",
+    "creators": ["Riot, Zobros and more"],
+    "verifier": "rampage",
+    "verification": "https://www.youtube.com/watch?v=NkIZGBl1hFY",
+    "percentToQualify": "48",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "Sebas",
+            "link": "https://www.youtube.com/watch?v=gseY8rvgfUA",
+            "percent": 100,
+            "hz": 0
+        },
+        {
+            "user": "Vargas",
+            "link": "",
+            "percent": 100,
+            "hz": 240
+        }
+    ]
+}

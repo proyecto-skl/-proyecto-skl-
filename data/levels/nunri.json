@@ -1,0 +1,18 @@
+{
+    "id": 81107735,
+    "name": "Nunri",
+    "author": "Szilu",
+    "creators": ["Szilu"],
+    "verifier": "Oliver",
+    "verification": "https://www.youtube.com/watch?v=FLr7F1CpFJk",
+    "percentToQualify": "48",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "xReizer",
+            "link": "https://www.youtube.com/watch?v=0tnMrSMk8qk",
+            "percent": 100,
+            "hz": 0
+        }
+    ]
+}

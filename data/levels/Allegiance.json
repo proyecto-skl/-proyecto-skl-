@@ -1,0 +1,18 @@
+{
+    "id": 20761188,
+    "name": "Allegiance",
+    "author": "nikroplays",
+    "creators": ["nikroplays"],
+    "verifier": "Endlevel",
+    "verification": "https://www.youtube.com/watch?v=wzutYMNXr-Y",
+    "percentToQualify": "48",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "OldKeptaBB",
+            "link": "https://www.youtube.com/watch?v=LqZQ7DttQbI",
+            "percent": 100,
+            "hz": 0
+        }
+    ]
+}

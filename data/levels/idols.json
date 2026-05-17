@@ -1,0 +1,24 @@
+{
+    "id": 48175126,
+    "name": "Idols",
+    "author": "Zafkiel7",
+    "creators": ["Herdys, Hoshikido, GeometryTom,Auntex and more"],
+    "verifier": "Dorami",
+    "verification": "https://www.youtube.com/watch?v=9Jw9_vie0Fk",
+    "percentToQualify": "48",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "Migos_rawr",
+            "link": "https://youtu.be/BzagAeiKW0E?si=VXY6b71AvJkgfLug",
+            "percent": 100,
+            "hz": 0
+        },
+        {
+            "user": "GuiNexPriN",
+            "link": "https://youtu.be/UlTHwQ3c2lc?si=nsouY296TkbKNqbr",
+            "percent": 100,
+            "hz": 0
+        }
+    ]
+}

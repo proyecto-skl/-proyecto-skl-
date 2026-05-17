@@ -1,0 +1,18 @@
+{
+    "id": 56069688,
+    "name": "Diamond Blade",
+    "author": "ProyectoSKL",
+    "creators": ["ProyectoSKL"],
+    "verifier": "ProyectoSKL",
+    "verification": "https://www.youtube.com/watch?v=WmAyinizDQk",
+    "percentToQualify": "48",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "Smothxz",
+            "link": "https://www.youtube.com/watch?v=6jOq2tFjU8A",
+            "percent": 100,
+            "hz": 0
+        }
+    ]
+}

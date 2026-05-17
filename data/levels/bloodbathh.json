@@ -1,0 +1,54 @@
+{
+    "id": 10565740,
+    "name": "Bloodbath",
+    "author": "Riot",
+    "creators": ["Asonicmen, Evasium, Crack, Riot and more"],
+    "verifier": "Riot",
+    "verification": "https://www.youtube.com/watch?v=AHPLl4AXg-Y",
+    "percentToQualify": "48",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "Shiku",
+            "link": "https://www.youtube.com/watch?v=-61LQPbBFQ0",
+            "percent": 100,
+            "hz": 0
+        },
+       {
+            "user": "Vargas",
+            "link": " ",
+            "percent": 100,
+            "hz": 240
+        },
+       {
+            "user": "Sebas",
+            "link": " ",
+            "percent": 100,
+            "hz": 240
+        },
+       {
+            "user": "Toxic",
+            "link": " ",
+            "percent": 100,
+            "hz": 240
+        },
+       {
+            "user": "XReizer",
+            "link": " ",
+            "percent": 100,
+            "hz": 240
+        },
+       {
+            "user": "Flame986",
+            "link": "https://www.youtube.com/watch?v=GWyf3Gv3EV4",
+            "percent": 100,
+            "hz": 240
+        },
+       {
+            "user": "OldKeptaBB",
+            "link": "https://www.youtube.com/watch?v=vRshgZIGg0k",
+            "percent": 100,
+            "hz": 240
+        }
+    ]
+}

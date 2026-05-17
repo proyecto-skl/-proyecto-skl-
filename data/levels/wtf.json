@@ -1,0 +1,18 @@
+{
+    "id": 93570042,
+    "name": "WTF",
+    "author": "madamEllyza",
+    "creators": ["madamEllyza"],
+    "verifier": "madamEllyza",
+    "verification": "https://www.youtube.com/watch?v=aGJnGoLr_0Q",
+    "percentToQualify": "48",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "IHankyI",
+            "link": "https://www.youtube.com/watch?v=tSB3P6d8a0U",
+            "percent": 100,
+            "hz": 60
+        }
+    ]
+}

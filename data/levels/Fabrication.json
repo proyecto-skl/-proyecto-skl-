@@ -1,0 +1,18 @@
+{
+    "id": 33983930,
+    "name": "Fabrication",
+    "author": "KeiAs",
+    "creators": ["Krampux, Motu, Sikatsuka, LatiMv2, and more"],
+    "verifier": "Nisha",
+    "verification": "https://www.youtube.com/watch?v=iQhnNchayAk",
+    "percentToQualify": "48",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "Toxic",
+            "link": "https://www.youtube.com/watch?v=ZxIv6G80ybA",
+            "percent": 100,
+            "hz": 0
+        }
+    ]
+}
