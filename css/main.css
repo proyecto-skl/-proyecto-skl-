@@ -22,9 +22,10 @@
   --bg-card:        #111827;
   --bg-card-hover:  #1a2438;
 
-  --accent-primary: #e8412a;
-  --accent-glow:    rgba(232, 65, 42, 0.4);
-  --accent-secondary: #ff6b35;
+  /* 🌟 NUEVA PALETA DORADA (REEMPLAZA AL NARANJA) 🌟 */
+  --accent-primary: #ffb700; /* Dorado principal (Botones, bordes activos, etc.) */
+  --accent-glow:    rgba(255, 183, 0, 0.35); /* Brillo dorado */
+  --accent-secondary: #ffd043; /* Dorado más claro (Para estados :hover) */
   --accent-gold:    #f5a623;
   --accent-blue:    #3b82f6;
   --accent-purple:  #8b5cf6;
@@ -32,11 +33,11 @@
   --text-primary:   #f0f4ff;
   --text-secondary: #8ca0c0;
   --text-muted:     #4a5a78;
-  --text-accent:    #e8412a;
+  --text-accent:    #ffb700; /* Textos destacados en dorado */
 
   --border-subtle:  rgba(255,255,255,0.05);
   --border-card:    rgba(255,255,255,0.08);
-  --border-accent:  rgba(232, 65, 42, 0.4);
+  --border-accent:  rgba(255, 183, 0, 0.4);
 
   /* Spacing */
   --space-xs:  4px;
@@ -59,7 +60,7 @@
 
   /* Shadows */
   --shadow-card:    0 4px 24px rgba(0,0,0,0.5);
-  --shadow-accent:  0 0 30px rgba(232, 65, 42, 0.25);
+  --shadow-accent:  0 0 30px rgba(255, 183, 0, 0.25);
   --shadow-hover:   0 8px 40px rgba(0,0,0,0.7);
 
   /* Transitions */
@@ -205,7 +206,7 @@ body::before {
 .nav-link.active {
   color: var(--accent-primary);
   border-left-color: var(--accent-primary);
-  background: rgba(232, 65, 42, 0.07);
+  background: rgba(255, 183, 0, 0.07);
 }
 
 .nav-link .nav-icon {
@@ -767,8 +768,8 @@ body::before {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--accent-primary);
-  background: rgba(232, 65, 42, 0.1);
-  border: 1px solid rgba(232, 65, 42, 0.3);
+  background: rgba(255, 183, 0, 0.1);
+  border: 1px solid rgba(255, 183, 0, 0.3);
   padding: 2px 10px;
   border-radius: 20px;
   margin-bottom: var(--space-sm);
@@ -874,7 +875,7 @@ body::before {
   display: inline-block;
   width: 36px;
   height: 36px;
-  border: 3px solid rgba(232, 65, 42, 0.2);
+  border: 3px solid rgba(255, 183, 0, 0.2);
   border-top-color: var(--accent-primary);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
@@ -896,14 +897,14 @@ body::before {
 
 .btn-primary {
   background: var(--accent-primary);
-  color: white;
-  box-shadow: 0 4px 14px rgba(232, 65, 42, 0.35);
+  color: #080b12; /* Texto oscuro para que contraste perfecto sobre el botón dorado */
+  box-shadow: 0 4px 14px rgba(255, 183, 0, 0.35);
 }
 
 .btn-primary:hover {
   background: var(--accent-secondary);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(232, 65, 42, 0.5);
+  box-shadow: 0 6px 20px rgba(255, 183, 0, 0.5);
 }
 
 .btn-outline {
@@ -932,8 +933,8 @@ body::before {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 12px rgba(232, 65, 42, 0.3); }
-  50%       { box-shadow: 0 0 28px rgba(232, 65, 42, 0.6); }
+  0%, 100% { box-shadow: 0 0 12px rgba(255, 183, 0, 0.3); }
+  50%       { box-shadow: 0 0 28px rgba(255, 183, 0, 0.6); }
 }
 
 /* ── 21. Staggered animation helpers ────────────────────────── */
