@@ -1,5 +1,5 @@
 /**
- * pages/about.js — Módulo de la sección "Sobre Nosotros" (Versión de 3 Columnas)
+ * pages/about.js — Módulo de la sección "Sobre Nosotros" (Versión con redes corregidas)
  */
 
 export async function render(container) {
@@ -40,7 +40,7 @@ export async function render(container) {
           </div>
           <div style="display: flex; gap: 10px; justify-content: center; margin-top: auto;">
             <a href="https://twitter.com/#" target="_blank" style="color: #1da1f2; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(29,161,242,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Twitter</a>
-            <a href="#" target="_blank" style="color: var(--accent-primary); text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(255,183,0,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Perfil</a>
+            <a href="https://discord.com/users/#" target="_blank" style="color: #5865f2; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(88,101,242,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Discord</a>
           </div>
         </div>
 
@@ -53,9 +53,8 @@ export async function render(container) {
               La mente detrás del código y las actualizaciones. Encargado de pulir los scripts, corregir errores técnicos de diseño, estructurar los JSON y añadir manualmente los nuevos niveles aceptados a las listas.
             </p>
           </div>
-          <div style="display: flex; gap: 10px; justify-content: center; margin-top: auto;">
-            <a href="https://github.com/#" target="_blank" style="color: var(--text-primary); text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(255,255,255,0.05); padding: 6px 12px; border-radius: var(--radius-sm);">GitHub</a>
-            <a href="#" target="_blank" style="color: #3b82f6; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(59,130,246,0.1); padding: 6px 12px; border-radius: var(--radius-sm);">Contacto</a>
+          <div style="display: flex; justify-content: center; margin-top: auto;">
+            <a href="https://discord.com/users/#" target="_blank" style="color: #5865f2; text-decoration: none; font-size: 0.85rem; font-weight: bold; background: rgba(88,101,242,0.1); padding: 6px 24px; border-radius: var(--radius-sm);">Discord</a>
           </div>
         </div>
 
