@@ -1,193 +1,167 @@
-# 🔥 Demon List — Geometry Dash Community Rankings
+# Proyecto SKL
 
-A modern, open-source community ranking site for Geometry Dash Extreme Demons and Challenges. Designed for GitHub Pages with zero server requirements.
+<div align="center">
 
----
+![Geometry Dash](https://img.shields.io/badge/Geometry%20Dash-Community_Project-blue?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-active-success?style=for-the-badge)
+![Languages](https://img.shields.io/badge/languages-HTML%20%7C%20CSS%20%7C%20JavaScript-orange?style=for-the-badge)
 
-## 📁 Project Structure
+Una lista creada por la comunidad para recopilar *Extreme Demons* completados dentro de la comunidad de un streamer.
 
-```
-demonlist/
-│
-├── index.html                  # Entry point — single HTML shell for the whole app
-│
-├── css/
-│   └── main.css                # Global design system (variables, layout, components)
-│
-├── js/
-│   ├── app.js                  # Core: router, navigation, shared utilities
-│   └── pages/
-│       ├── mainlist.js         # Main List page — loads data/levels/mainlist.json
-│       ├── challenges.js       # Challenge List page — loads data/challenges/challengelist.json
-│       ├── leaderboard.js      # Leaderboard page — loads data/leaderboard.json
-│       └── news.js             # News/Blog page — loads data/news/posts.json
-│
-├── data/
-│   ├── levels/
-│   │   └── mainlist.json       # ← EDIT THIS to add/remove Main List levels
-│   ├── challenges/
-│   │   └── challengelist.json  # ← EDIT THIS to add/remove Challenges
-│   ├── news/
-│   │   └── posts.json          # ← EDIT THIS to publish news posts (admins only)
-│   └── leaderboard.json        # ← EDIT THIS to update player rankings
-│
-└── README.md                   # This file
-```
+A community-driven list made to archive and showcase completed *Extreme Demons* from a streamer's community.
+
+</div>
 
 ---
 
-## 🚀 Deploying to GitHub Pages
+# 🇪🇸 Español
 
-1. Push this repository to GitHub
-2. Go to **Settings → Pages**
-3. Set source to **main branch / root folder**
-4. Your site will be live at `https://yourusername.github.io/repositoryname`
+## 📌 ¿Qué es Proyecto SKL?
 
-> No build steps. No dependencies. Pure HTML/CSS/JS.
+Proyecto SKL es una página inspirada en las famosas *Demon Lists* de Geometry Dash, enfocada en recopilar los *Extreme Demons* completados por la comunidad.
 
----
+La página incluye diferentes sistemas y apartados creados para que la comunidad pueda participar activamente:
 
-## 📝 Adding Content (Admins Only)
+* 🏆 Lista principal de Extreme Demons
+* ⚡ Apartado de Challenges
+* 👥 Leaderboard de jugadores
+* 📤 Sistema para subir challenges
+* 🎮 Diseño inspirado en la comunidad de Geometry Dash
+* 🌐 Página accesible desde navegador
 
-Since the site runs entirely from JSON files, only people with **write access to the GitHub repository** can publish content. No login panel needed.
+## 🚀 Características
 
-### ➕ Add a level to the Main List
+### 📜 Main List
 
-Edit `data/levels/mainlist.json`. Add a new object to the array:
+La lista principal recopila niveles considerados relevantes dentro de la comunidad.
 
-```json
-{
-  "rank": 6,
-  "name": "Your Level Name",
-  "id": "12345678",
-  "creator": "CreatorName",
-  "verifier": "VerifierName",
-  "videoId": "YOUTUBE_VIDEO_ID",
-  "thumbnail": "",
-  "difficulty": "Extreme Demon",
-  "points": 940,
-  "tags": ["extreme", "deco"],
-  "description": "Short description of the level.",
-  "dateAdded": "2024-04-01"
-}
+### ⚡ Challenges
+
+Los usuarios pueden crear y enviar challenges personalizados para formar parte de la página.
+
+### 🏅 Leaderboard
+
+Sistema de clasificación para mostrar el progreso y la participación de los jugadores.
+
+### 🌍 Comunidad
+
+Proyecto creado principalmente para la comunidad hispanohablante de Geometry Dash.
+
+## 🛠 Tecnologías utilizadas
+
+* HTML
+* CSS
+* JavaScript
+
+## 🌐 Página web
+
+👉 [https://proyecto-skl.github.io/-proyecto-skl-/#mainlist](https://proyecto-skl.github.io/-proyecto-skl-/#mainlist)
+
+## 📷 Capturas
+
+> Aquí puedes añadir imágenes o gifs de la página.
+
+```md
+![preview](ruta-imagen)
 ```
 
-**Tags available:** `extreme`, `classic`, `deco`, `buffed`, `skill`, `silent`, `collab`, `mega-collab`, `technical`
+## 📌 Objetivo del proyecto
 
-> ⚠️ The Main List (`data/levels/mainlist.json`) and Challenge List (`data/challenges/challengelist.json`) are **completely separate**. Editing one never affects the other.
+El objetivo de Proyecto SKL es ofrecer un espacio donde la comunidad pueda:
+
+* Compartir logros
+* Competir amistosamente
+* Publicar challenges
+* Mantener registros organizados
+* Expandir la interacción entre jugadores
+
+## 🤝 Contribuciones
+
+Las contribuciones, sugerencias e ideas son bienvenidas.
+
+Si quieres ayudar al proyecto:
+
+1. Haz un fork del repositorio
+2. Realiza tus cambios
+3. Envía un Pull Request
 
 ---
 
-### ➕ Add a Challenge
+# 🇺🇸 English
 
-Edit `data/challenges/challengelist.json`. Same structure as above, with `"type": "challenge"`.
+## 📌 What is Proyecto SKL?
 
-> Challenges have their own JSON file and their own page. They are never auto-synced with the Main List.
+Proyecto SKL is a community-driven website inspired by popular Geometry Dash Demon Lists, focused on collecting and showcasing completed *Extreme Demons* from a streamer's community.
 
----
+The website includes several systems and sections designed to encourage community participation:
 
-### 📰 Publish a News Post
+* 🏆 Main Extreme Demon List
+* ⚡ Challenges section
+* 👥 Player leaderboard
+* 📤 Community challenge submissions
+* 🎮 Geometry Dash inspired design
+* 🌐 Browser-accessible website
 
-Edit `data/news/posts.json`. Add a new object at the **top** of the array (newest first):
+## 🚀 Features
 
-```json
-{
-  "id": "news-004",
-  "title": "Your Post Title",
-  "slug": "your-post-slug",
-  "author": "Admin",
-  "date": "2024-04-01",
-  "category": "announcement",
-  "tags": ["update"],
-  "thumbnail": "",
-  "excerpt": "Short preview shown on the news grid.",
-  "content": "Full post content here.\n\nSupports **bold**, ## Headings, and - list items."
-}
+### 📜 Main List
+
+The main section contains featured and completed Extreme Demons from the community.
+
+### ⚡ Challenges
+
+Users can create and submit custom challenges to be added to the website.
+
+### 🏅 Leaderboard
+
+A ranking system that tracks player activity and progress.
+
+### 🌍 Community Focus
+
+Mainly focused on the Spanish-speaking Geometry Dash community.
+
+## 🛠 Built With
+
+* HTML
+* CSS
+* JavaScript
+
+## 🌐 Website
+
+👉 [https://proyecto-skl.github.io/-proyecto-skl-/#mainlist](https://proyecto-skl.github.io/-proyecto-skl-/#mainlist)
+
+## 📷 Screenshots
+
+> You can add screenshots or gifs here.
+
+```md
+![preview](image-path)
 ```
 
-**Categories:** `announcement`, `list-update`, `rules`, `community`, `event`
+## 📌 Project Goal
 
-**Content supports basic Markdown:**
-- `## Heading` → H2
-- `**bold**` → bold
-- `- item` → list item
-- Double newline → paragraph break
+Proyecto SKL aims to provide a space where the community can:
 
----
+* Share achievements
+* Compete with others
+* Publish challenges
+* Keep organized records
+* Improve community interaction
 
-### 🏆 Update the Leaderboard
+## 🤝 Contributions
 
-Edit `data/leaderboard.json`. Each player object:
+Suggestions, ideas and contributions are welcome.
 
-```json
-{
-  "rank": 1,
-  "name": "PlayerName",
-  "country": "US",
-  "countryFlag": "🇺🇸",
-  "totalPoints": 5000,
-  "completions": 15,
-  "verifications": 4,
-  "avatar": "",
-  "socials": {
-    "youtube": "https://youtube.com/...",
-    "twitch": ""
-  }
-}
-```
+To contribute:
+
+1. Fork the repository
+2. Make your changes
+3. Submit a Pull Request
 
 ---
 
-## 🎨 Customization
+<div align="center">
 
-### Colors & Branding
+Made with ❤️ for the Geometry Dash community.
 
-All colors are CSS Custom Properties in `css/main.css` under `:root`. Change:
-
-```css
---accent-primary:   #e8412a;   /* Main red accent */
---accent-secondary: #ff6b35;   /* Hover/secondary */
---bg-base:          #080b12;   /* Page background */
-```
-
-### Adding a New Page
-
-1. Create `js/pages/yourpage.js` — export a `render(container)` function
-2. Add a route in `js/app.js` ROUTES object: `'yourpage': () => loadPage('yourpage')`
-3. Add a nav link in `index.html`:
-   ```html
-   <a href="#yourpage" class="nav-link" data-page="yourpage">
-     <span class="nav-icon">🆕</span>
-     Your Page
-   </a>
-   ```
-
----
-
-## 🔒 Security Model
-
-- **No user authentication** — no login, no sessions, no cookies
-- **Admin access = GitHub write access** — whoever can commit to the repo can update content
-- **No backend** — all data is static JSON, served by GitHub Pages CDN
-- **XSS prevention** — all user-facing data is HTML-escaped before rendering
-
----
-
-## 🛠 Technology
-
-| Layer       | Technology            |
-|-------------|----------------------|
-| Hosting     | GitHub Pages (free)  |
-| Markup      | HTML5                |
-| Styling     | CSS3 (custom props)  |
-| Scripting   | Vanilla JS (ES2020)  |
-| Data        | Static JSON files    |
-| Fonts       | Google Fonts (CDN)   |
-| Build tool  | None                 |
-| Dependencies| None                 |
-
----
-
-## 📄 License
-
-MIT — Free to use, fork, and modify.
+</div>
