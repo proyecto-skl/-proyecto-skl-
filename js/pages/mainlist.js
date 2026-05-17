@@ -1,5 +1,5 @@
 /**
- * mainlist.js — Módulo de la Lista Principal con carga de archivos individuales
+ * mainlist.js — Módulo de la Lista Principal optimizado para GitHub Pages
  */
 
 export async function render(container) {
@@ -11,27 +11,25 @@ export async function render(container) {
   `;
 
   try {
-    // 1. Calculamos dinámicamente la raíz real de tu sitio web
-    const baseUrl = window.location.origin + window.location.pathname.split('/').slice(0, -1).join('/');
-    
-    // Si la URL termina en 'js/pages' o 'js', limpiamos la ruta para asegurar la raíz del proyecto
-    const rootUrl = baseUrl.replace(/\/js\/pages$/, '').replace(/\/js$/, '');
+    // 1. Buscamos de forma segura la raíz de la app sin romper los nombres de repositorios con guiones
+    const loc = window.location;
+    const rootUrl = loc.protocol + '//' + loc.host + loc.pathname.replace(/\/js\/pages\/.*$/, '').replace(/\/index\.html$/, '').replace(/\/$/, '');
 
-    // 2. Traemos el archivo índice general (_list.json) usando la ruta absoluta calculada
+    // 2. Traemos el índice general de niveles usando la ruta absoluta limpia
     const listResponse = await fetch(`${rootUrl}/data/levels/_list.json`);
     if (!listResponse.ok) {
-      throw new Error(`Error ${listResponse.status}: No se encontró el archivo _list.json en la ruta calculada.`);
+      throw new Error(`Error ${listResponse.status}: No se encontró el archivo _list.json en: ${rootUrl}/data/levels/_list.json`);
     }
     const levelFiles = await listResponse.json();
 
-    // 3. Mapeamos y cargamos cada archivo JSON de nivel de forma individual
+    // 3. Cargamos cada archivo JSON de nivel de forma individual en paralelo
     const levelPromises = levelFiles.map(async (fileName, index) => {
       try {
         const res = await fetch(`${rootUrl}/data/levels/${fileName.trim()}.json`);
         if (!res.ok) return null;
         const levelData = await res.json();
         
-        // Asignamos el top/rank automáticamente según su posición en la lista
+        // Asignamos el top/rank automáticamente según su orden en el array
         return { ...levelData, rank: index + 1 };
       } catch (err) {
         console.error(`Error cargando el archivo del nivel: ${fileName}`, err);
@@ -40,7 +38,7 @@ export async function render(container) {
     });
 
     const levels = await Promise.all(levelPromises);
-    // Filtramos los niveles que hayan fallado para que no rompan la web
+    // Filtramos los niveles que no se pudieron cargar (por si hay un 404 en alguno)
     const activeLevels = levels.filter(l => l !== null);
 
     if (activeLevels.length === 0) {
@@ -48,7 +46,7 @@ export async function render(container) {
       return;
     }
 
-    // 4. Renderizamos las tarjetas con la estructura visual de la plantilla
+    // 4. Renderizamos las tarjetas con el diseño estético de tu plantilla
     container.innerHTML = `
       <div class="list-grid">
         ${activeLevels.map(level => `
@@ -80,10 +78,10 @@ export async function render(container) {
 
   } catch (error) {
     container.innerHTML = `
-      <div class="state-message" style="color: var(--color-error, #f85149); padding: 20px;">
+      <div class="state-message" style="color: var(--color-error, #f85149); padding: 20px; text-align: left;">
         <p>⚠️ Hubo un error al estructurar la lista: ${error.message}</p>
-        <p style="font-size: 12px; margin-top: 10px; opacity: 0.7;">
-          Asegúrate de tener la carpeta <strong>data/levels/</strong> con su archivo <strong>_list.json</strong> dentro.
+        <p style="font-size: 13px; margin-top: 10px; opacity: 0.8;">
+          Asegurate de subir los cambios a tu repositorio de GitHub para que existan las carpetas correspondientes.
         </p>
       </div>
     `;
