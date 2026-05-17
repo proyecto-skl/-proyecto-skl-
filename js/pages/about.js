@@ -17,7 +17,7 @@ export async function render(container) {
         <div style="background: var(--bg-surface); border: 1px solid var(--border-card); padding: 24px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm); border-top: 3px solid #ff4545; display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div style="font-size: 3rem; margin-bottom: 12px;">🎥</div>
-            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[-Shiku08-]</h2>
+            <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">Shiku08</h2>
             <p style="color: #ff4545; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">Streamer y Dueño de la Comunidad</p>
             <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
               La cara visible en directo y líder de la comunidad. Una persona muy buena, agradable y carismatica, organiza los eventos en vivo junto a sus moderadores Sharno y Hank, discutir y manda a la mierda el chat, testea los niveles en tiempo real aunque le da flojera pasarselos, se lo aprecia un monton.
