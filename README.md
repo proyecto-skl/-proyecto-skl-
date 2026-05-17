@@ -81,87 +81,9 @@ Las contribuciones, sugerencias e ideas son bienvenidas.
 
 Si quieres ayudar al proyecto:
 
-1. Haz un fork del repositorio
-2. Realiza tus cambios
-3. Envía un Pull Request
+1. Habla con el dueño o editor (Hank y vargas, se encuentran en el discord de la comunidad)
+2. Explica tus cambios
 
 ---
-
-# 🇺🇸 English
-
-## 📌 What is Proyecto SKL?
-
-Proyecto SKL is a community-driven website inspired by popular Geometry Dash Demon Lists, focused on collecting and showcasing completed *Extreme Demons* from a streamer's community.
-
-The website includes several systems and sections designed to encourage community participation:
-
-* 🏆 Main Extreme Demon List
-* ⚡ Challenges section
-* 👥 Player leaderboard
-* 📤 Community challenge submissions
-* 🎮 Geometry Dash inspired design
-* 🌐 Browser-accessible website
-
-## 🚀 Features
-
-### 📜 Main List
-
-The main section contains featured and completed Extreme Demons from the community.
-
-### ⚡ Challenges
-
-Users can create and submit custom challenges to be added to the website.
-
-### 🏅 Leaderboard
-
-A ranking system that tracks player activity and progress.
-
-### 🌍 Community Focus
-
-Mainly focused on the Spanish-speaking Geometry Dash community.
-
-## 🛠 Built With
-
-* HTML
-* CSS
-* JavaScript
-
-## 🌐 Website
-
-👉 [https://proyecto-skl.github.io/-proyecto-skl-/#mainlist](https://proyecto-skl.github.io/-proyecto-skl-/#mainlist)
-
-## 📷 Screenshots
-
-> You can add screenshots or gifs here.
-
-```md
-![preview](image-path)
-```
-
-## 📌 Project Goal
-
-Proyecto SKL aims to provide a space where the community can:
-
-* Share achievements
-* Compete with others
-* Publish challenges
-* Keep organized records
-* Improve community interaction
-
-## 🤝 Contributions
-
-Suggestions, ideas and contributions are welcome.
-
-To contribute:
-
-1. Fork the repository
-2. Make your changes
-3. Submit a Pull Request
-
----
-
-<div align="center">
-
-Made with ❤️ for the Geometry Dash community.
 
 </div>
