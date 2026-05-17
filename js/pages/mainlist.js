@@ -1,5 +1,5 @@
 /**
- * mainlist.js — Módulo de la Lista Principal con carga dividida corregida
+ * mainlist.js — Módulo de la Lista Principal con carga de archivos individuales
  */
 
 export async function render(container) {
@@ -11,29 +11,36 @@ export async function render(container) {
   `;
 
   try {
-    // Volvemos dos carpetas hacia atrás (sale de pages/ y de js/) para ir a la raíz real
-    const listResponse = await fetch('../../data/levels/_list.json');
-    if (!listResponse.ok) throw new Error(`Error ${listResponse.status}: No se encontró _list.json`);
+    // 1. Calculamos dinámicamente la raíz real de tu sitio web
+    const baseUrl = window.location.origin + window.location.pathname.split('/').slice(0, -1).join('/');
+    
+    // Si la URL termina en 'js/pages' o 'js', limpiamos la ruta para asegurar la raíz del proyecto
+    const rootUrl = baseUrl.replace(/\/js\/pages$/, '').replace(/\/js$/, '');
+
+    // 2. Traemos el archivo índice general (_list.json) usando la ruta absoluta calculada
+    const listResponse = await fetch(`${rootUrl}/data/levels/_list.json`);
+    if (!listResponse.ok) {
+      throw new Error(`Error ${listResponse.status}: No se encontró el archivo _list.json en la ruta calculada.`);
+    }
     const levelFiles = await listResponse.json();
 
-    // Mapeamos y cargamos cada archivo JSON por separado al mismo tiempo
+    // 3. Mapeamos y cargamos cada archivo JSON de nivel de forma individual
     const levelPromises = levelFiles.map(async (fileName, index) => {
       try {
-        // También volvemos atrás para los archivos individuales de los niveles
-        const res = await fetch(`../../data/levels/${fileName.trim()}.json`);
+        const res = await fetch(`${rootUrl}/data/levels/${fileName.trim()}.json`);
         if (!res.ok) return null;
         const levelData = await res.json();
         
-        // Le asignamos el top/rank automáticamente según su orden en la lista
+        // Asignamos el top/rank automáticamente según su posición en la lista
         return { ...levelData, rank: index + 1 };
       } catch (err) {
-        console.error(`Error cargando el archivo de nivel: ${fileName}`, err);
+        console.error(`Error cargando el archivo del nivel: ${fileName}`, err);
         return null;
       }
     });
 
     const levels = await Promise.all(levelPromises);
-    // Filtramos por si algún archivo falló o tiró 404 para que no rompa la web
+    // Filtramos los niveles que hayan fallado para que no rompan la web
     const activeLevels = levels.filter(l => l !== null);
 
     if (activeLevels.length === 0) {
@@ -41,7 +48,7 @@ export async function render(container) {
       return;
     }
 
-    // Renderizamos las tarjetas con el diseño estético de la plantilla
+    // 4. Renderizamos las tarjetas con la estructura visual de la plantilla
     container.innerHTML = `
       <div class="list-grid">
         ${activeLevels.map(level => `
@@ -73,8 +80,11 @@ export async function render(container) {
 
   } catch (error) {
     container.innerHTML = `
-      <div class="state-message" style="color: var(--color-error, #f85149);">
-        <p>Hubo un error al estructurar la lista: ${error.message}</p>
+      <div class="state-message" style="color: var(--color-error, #f85149); padding: 20px;">
+        <p>⚠️ Hubo un error al estructurar la lista: ${error.message}</p>
+        <p style="font-size: 12px; margin-top: 10px; opacity: 0.7;">
+          Asegúrate de tener la carpeta <strong>data/levels/</strong> con su archivo <strong>_list.json</strong> dentro.
+        </p>
       </div>
     `;
   }
