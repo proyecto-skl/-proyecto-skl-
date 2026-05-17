@@ -21,6 +21,7 @@ const ROUTES = {
   'leaderboard': () => loadPage('leaderboard'),
   'news'       : () => loadPage('news'),
   'roulette'   : () => loadPage('roulette'),
+  'about'      : () => loadPage('about'),
 };
 
 /**
