@@ -1,5 +1,5 @@
 /**
- * pages/roulette.js — Módulo de Ruleta Progresiva para la Main List
+ * pages/roulette.js — Módulo de Ruleta Progresiva para data/levels/
  */
 
 /* ── State de la partida ────────────────────────────────────── */
@@ -13,61 +13,58 @@ let gameState = {
   pool: [] // Niveles cargados desde data/levels/
 };
 
-/* ── OBJETO DE EXPORTACIÓN (Para que app.js lo lea sin errores) ── */
-const roulettePage = {
-  async render(container) {
-    container.innerHTML = `
-      <div class="state-message">
-        <div class="spinner"></div>
-        <p style="margin-top:16px;">Preparando los engranajes de la ruleta...</p>
-      </div>
-    `;
+/* ── FUNCIÓN PRINCIPAL DE RENDERIZADO NOMBRADA ──────────────── */
+export async function render(container) {
+  container.innerHTML = `
+    <div class="state-message">
+      <div class="spinner"></div>
+      <p style="margin-top:16px;">Preparando los engranajes de la ruleta...</p>
+    </div>
+  `;
 
-    try {
-      // 1. Cargamos el índice de niveles usando rutas relativas limpias
-      const listResponse = await fetch('data/levels/_list.json');
-      if (!listResponse.ok) throw new Error("No se pudo obtener el índice de niveles desde data/levels/_list.json");
-      const levelFiles = await listResponse.json();
+  try {
+    // 1. Cargamos el índice de niveles desde la carpeta de niveles generales
+    const listResponse = await fetch('data/levels/_list.json');
+    if (!listResponse.ok) throw new Error("No se pudo obtener el índice desde data/levels/_list.json");
+    const levelFiles = await listResponse.json();
 
-      // Traemos todos los archivos JSON de los niveles en paralelo
-      const levelPromises = levelFiles.map(async (file) => {
-        try {
-          const res = await fetch(`data/levels/${file.trim()}.json`);
-          return res.ok ? await res.json() : null;
-        } catch { return null; }
-      });
-      
-      const loadedLevels = await Promise.all(levelPromises);
-      
-      // Filtramos los challenges si tienen alguna propiedad que los identifique, o simplemente cargamos el pool
-      // Ordenamos por posición de reversa (para arrancar desde el más fácil, ej: #100 hacia el #1)
-      gameState.pool = loadedLevels
-        .filter(l => l !== null)
-        .sort((a, b) => b.position - a.position);
+    // Traemos todos los archivos JSON de los niveles en paralelo
+    const levelPromises = levelFiles.map(async (file) => {
+      try {
+        const res = await fetch(`data/levels/${file.trim()}.json`);
+        return res.ok ? await res.json() : null;
+      } catch { return null; }
+    });
+    
+    const loadedLevels = await Promise.all(levelPromises);
+    
+    // Filtramos los niveles válidos y los ordenamos al revés (para arrancar por los "más fáciles" según posición)
+    gameState.pool = loadedLevels
+      .filter(l => l !== null)
+      .sort((a, b) => b.position - a.position);
 
-      if (gameState.pool.length === 0) {
-        container.innerHTML = `<div class="state-message"><p>No hay suficientes niveles en la carpeta data/levels/ para jugar.</p></div>`;
-        return;
-      }
-
-      // Intentar recuperar partida guardada en localStorage
-      const saved = localStorage.getItem('gd_roulette_save');
-      if (saved) {
-        try { gameState = { ...gameState, ...JSON.parse(saved) }; } catch (e) { console.error(e); }
-      }
-
-      // 2. Pintar la interfaz base
-      updateUI(container);
-
-    } catch (err) {
-      container.innerHTML = `
-        <div class="state-message" style="color: #ff4545;">
-          <p style="font-family: var(--font-ui); font-size: 1.2rem; font-weight: bold;">⚠️ Error al inicializar la ruleta</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">${err.message}</p>
-        </div>`;
+    if (gameState.pool.length === 0) {
+      container.innerHTML = `<div class="state-message"><p>No hay suficientes niveles en data/levels/ para jugar.</p></div>`;
+      return;
     }
+
+    // Intentar recuperar partida guardada en localStorage
+    const saved = localStorage.getItem('gd_roulette_save');
+    if (saved) {
+      try { gameState = { ...gameState, ...JSON.parse(saved) }; } catch (e) { console.error(e); }
+    }
+
+    // 2. Pintar la interfaz base
+    updateUI(container);
+
+  } catch (err) {
+    container.innerHTML = `
+      <div class="state-message" style="color: #ff4545;">
+        <p style="font-family: var(--font-ui); font-size: 1.2rem; font-weight: bold;">⚠️ Error al inicializar la ruleta</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">${err.message}</p>
+      </div>`;
   }
-};
+}
 
 /* ── Actualizar la interfaz gráfica ─────────────────────────── */
 function updateUI(container) {
@@ -128,7 +125,6 @@ function updateUI(container) {
     const lvl = gameState.currentLevel;
     const thumbnail = lvl.thumbnail || 'https://img.youtube.com/vi/placeholder/mqdefault.jpg';
     
-    // Renderizamos los corazones visuales de vidas
     const hearts = Array(3).fill(0).map((_, i) => i < gameState.lives ? '❤️' : '🖤').join(' ');
 
     container.innerHTML = `
@@ -216,7 +212,7 @@ function updateUI(container) {
         alert(`💀 ¡Game Over! Te quedaste sin vidas en el ${gameState.currentPercent}%. Buen intento.`);
         resetGame();
       } else {
-        nextRoll(); // Cambia de nivel para el mismo porcentaje
+        nextRoll();
       }
       saveGame();
       updateUI(container);
@@ -278,7 +274,3 @@ function escapeHTML(str) {
   if (!str) return '';
   return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
-
-// EXPORTACIÓN FINAL COMPATIBLE CON APP.JS
-export default roulettePage;
-export { roulettePage as roulette };
