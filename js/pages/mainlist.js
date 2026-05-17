@@ -1,35 +1,81 @@
-export async function render(container) {
-  // Obtenemos la URL exacta de dónde está parado este archivo
-  const urlDeEsteScript = import.meta.url;
-  
-  // Obtenemos la URL de la raíz de la página web
-  const urlRaizWeb = window.location.origin + window.location.pathname;
+/**
+ * mainlist.js — Módulo de la Lista Principal con carga dividida corregida
+ */
 
+export async function render(container) {
   container.innerHTML = `
-    <div class="state-message" style="text-align: left; padding: 20px; line-height: 1.6;">
-      <h3 style="color: #ffb400;">🔍 Modo Diagnóstico de Rutas</h3>
-      <p><strong>Raíz de la web:</strong> <code style="background:#222; padding:2px 6px;">${urlRaizWeb}</code></p>
-      <p><strong>Este script está en:</strong> <code style="background:#222; padding:2px 6px;">${urlDeEsteScript}</code></p>
-      <p><strong>Intentando buscar en:</strong> <code style="background:#222; padding:2px 6px;">data/levels/_list.json</code></p>
-      <hr style="border-color: #333;">
-      <p id="test-resultado" style="color: #ff4545;">Probando conexión...</p>
+    <div class="state-message">
+      <div class="spinner"></div>
+      <p style="margin-top:16px;">Cargando niveles separados...</p>
     </div>
   `;
 
-  // Hacemos un fetch de prueba y atrapamos la URL exacta generada
   try {
-    const respuestaPrueba = await fetch('data/levels/_list.json');
-    if (!respuestaPrueba.ok) {
-      document.getElementById('test-resultado').innerHTML = `
-        ❌ El servidor respondió, pero el archivo NO existe ahí.<br>
-        <strong>Código de Error:</strong> ${respuestaPrueba.status} (${respuestaPrueba.statusText})<br>
-        <strong>Ruta real que falló:</strong> <code style="background:#222; color:#fff; padding:2px 6px;">${respuestaPrueba.url}</code>
-      `;
-    } else {
-      document.getElementById('test-resultado').style.color = "#00ff66";
-      document.getElementById('test-resultado').innerHTML = "¡Éxito! El archivo fue encontrado.";
+    // Volvemos dos carpetas hacia atrás (sale de pages/ y de js/) para ir a la raíz real
+    const listResponse = await fetch('../../data/levels/_list.json');
+    if (!listResponse.ok) throw new Error(`Error ${listResponse.status}: No se encontró _list.json`);
+    const levelFiles = await listResponse.json();
+
+    // Mapeamos y cargamos cada archivo JSON por separado al mismo tiempo
+    const levelPromises = levelFiles.map(async (fileName, index) => {
+      try {
+        // También volvemos atrás para los archivos individuales de los niveles
+        const res = await fetch(`../../data/levels/${fileName.trim()}.json`);
+        if (!res.ok) return null;
+        const levelData = await res.json();
+        
+        // Le asignamos el top/rank automáticamente según su orden en la lista
+        return { ...levelData, rank: index + 1 };
+      } catch (err) {
+        console.error(`Error cargando el archivo de nivel: ${fileName}`, err);
+        return null;
+      }
+    });
+
+    const levels = await Promise.all(levelPromises);
+    // Filtramos por si algún archivo falló o tiró 404 para que no rompa la web
+    const activeLevels = levels.filter(l => l !== null);
+
+    if (activeLevels.length === 0) {
+      container.innerHTML = `<p class="state-message">No hay niveles disponibles en la lista.</p>`;
+      return;
     }
-  } catch (err) {
-    document.getElementById('test-resultado').innerHTML = `❌ Error de red catastrófico: ${err.message}`;
+
+    // Renderizamos las tarjetas con el diseño estético de la plantilla
+    container.innerHTML = `
+      <div class="list-grid">
+        ${activeLevels.map(level => `
+          <div class="level-card">
+            <div class="card-thumb-wrapper">
+              <img 
+                src="${level.thumbnail || 'https://i.ytimg.com/vi/' + level.videoId + '/hqdefault.jpg'}" 
+                alt="${level.name}" 
+                class="card-thumb" 
+                loading="lazy" 
+              />
+              <span class="card-rank">#${level.rank}</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">${level.name}</h3>
+              <p class="card-author">Por <strong>${level.creator}</strong></p>
+              <p class="card-description">${level.description || 'Sin descripción disponible.'}</p>
+              <div class="card-footer">
+                <span class="points-badge">${level.points || 0} PTS</span>
+                <div class="card-tags">
+                  ${(level.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+
+  } catch (error) {
+    container.innerHTML = `
+      <div class="state-message" style="color: var(--color-error, #f85149);">
+        <p>Hubo un error al estructurar la lista: ${error.message}</p>
+      </div>
+    `;
   }
 }
