@@ -35,7 +35,7 @@ export async function render(container) {
             <h2 style="font-family: var(--font-ui); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 4px;">[-Hanky_rawr-]</h2>
             <p style="color: var(--accent-primary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 16px;">Creador y Dueño de la Página</p>
             <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
-              Fundador de la lista (Idea robada de Krinsi y Kepta :v). Encargado de la programacion, organizacion y diseño de la pagina entera (ayudado de la ia tambien ya que es un retrasado).
+              Fundador de la lista (Idea robada de Krinsi y Kepta :v). Encargado de la programacion, organizacion y diseño de la pagina entera.
             </p>
           </div>
           <div style="display: flex; gap: 10px; justify-content: center; margin-top: auto;">
