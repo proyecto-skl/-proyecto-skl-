@@ -1,9 +1,4 @@
-/**
- * mainlist.js — Módulo de la Lista Principal con carga dividida
- */
-
 export async function render(container) {
-  // 1. Ponemos el cargando interino
   container.innerHTML = `
     <div class="state-message">
       <div class="spinner"></div>
@@ -12,10 +7,12 @@ export async function render(container) {
   `;
 
   try {
-    // 2. Traemos el archivo índice de los niveles
-    const listResponse = await fetch('data/levels/_list.json');
-    if (!listResponse.ok) throw new Error('No se pudo cargar el índice de niveles (_list.json)');
+    // Usamos ./ para asegurar que parta desde la raíz de tu proyecto
+    const listResponse = await fetch('./data/levels/_list.json');
+    if (!listResponse.ok) throw new Error(`Error ${listResponse.status}: No se encontró _list.json`);
     const levelFiles = await listResponse.json();
+
+    // ... (el resto del código sigue exactamente igual)
 
     // 3. Mapeamos y cargamos cada archivo JSON por separado al mismo tiempo
     const levelPromises = levelFiles.map(async (fileName, index) => {
