@@ -3,8 +3,15 @@
    Importado en index.html y en todas las páginas.
    ============================================================ */
 
-/* ── 1. Google Fonts ───────────────────────────────────────── */
+/* ── 1. Google Fonts & Local Fonts ─────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap');
+
+@font-face {
+  font-family: 'SF Distant Galaxy';
+  src: url('../assets/SF Distant Galaxy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 /* ── 2. CSS Custom Properties (Design Tokens) ──────────────── */
 :root {
@@ -40,7 +47,7 @@
   --space-2xl: 64px;
 
   /* Typography */
-  --font-display: 'Orbitron', monospace;
+  --font-display: 'SF Distant Galaxy', 'Orbitron', monospace;
   --font-ui:      'Rajdhani', sans-serif;
   --font-body:    'Inter', sans-serif;
 
