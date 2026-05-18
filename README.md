@@ -61,7 +61,7 @@ Proyecto creado principalmente para la comunidad hispanohablante de Geometry Das
 
 
 ```md
-![preview](ruta-imagen)
+![preview](assets/skl.png)
 ```
 
 ## 📌 Objetivo del proyecto
