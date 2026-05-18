@@ -876,3 +876,25 @@ button {
     width: 140px;
   }
 }
+/* --- Scrollbar invisible (sin track/pista) --- */
+::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Fondo invisible */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2); /* Color de la barra (blanco suave) */
+  border-radius: 4px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4); /* Un poco más visible al pasar el mouse */
+}
+
+/* Opcional: Ocultar las flechas de los extremos si no las quieres ver */
+::-webkit-scrollbar-button {
+  display: none;
+}
