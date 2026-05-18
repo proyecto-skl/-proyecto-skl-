@@ -14,8 +14,6 @@ A community-driven list made to archive and showcase completed *Extreme Demons* 
 
 ---
 
-# 🇪🇸 Español
-
 ## 📌 ¿Qué es Proyecto SKL?
 
 Proyecto SKL es una página inspirada en las famosas *Demon Lists* de Geometry Dash, enfocada en recopilar los *Extreme Demons* completados por la comunidad.
