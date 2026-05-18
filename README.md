@@ -59,10 +59,7 @@ Proyecto creado principalmente para la comunidad hispanohablante de Geometry Das
 
 ## 📷 Capturas
 
-
-```md
 ![preview](assets/skl.png)
-```
 
 ## 📌 Objetivo del proyecto
 
