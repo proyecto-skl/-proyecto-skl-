@@ -122,9 +122,9 @@ export async function render(container) {
 
       <div style="background: linear-gradient(135deg, rgba(255,183,0,0.05) 0%, rgba(14,20,32,1) 100%); border: 1px solid rgba(255,183,0,0.2); padding: 32px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-md);">
         <span style="font-size: 2.5rem; display: block; margin-bottom: 8px;">🌐</span>
-        <h3 style="font-family: var(--font-ui); color: var(--text-primary); font-size: 1.4rem; margin-bottom: 12px;">¡Sumate a la Comunidad en Vivo!</h3>
+        <h3 style="font-family: var(--font-ui); color: var(--text-primary); font-size: 1.4rem; margin-bottom: 12px;">¡Sumate a la Comunidad de Shiku!</h3>
         <p style="color: var(--text-secondary); max-width: 650px; margin: 0 auto 24px; line-height: 1.6; font-size: 0.95rem;">
-          Gran parte de los niveles añadidos y de los récords cargados en la Leaderboard son verificados en tiempo real durante los streams. ¡No te pierdas las jornadas de debate, las votaciones de dificultad y el gameplay en directo!
+          Comparte tus asañas, interactua con otros miembros, participa en eventos creados para la comunidad y se parte de este pequeño rincón dedicado a Geometry dash a parte de otros juegos, celebrar los logros y momentos más destacados de la comunidad de Shiku. ¡Te esperamos con los brazos abiertos para seguir creciendo juntos!
         </p>
         <a href="https://discord.gg/UvYs4NgDF4" target="_blank" class="topbar-btn-cta" style="display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 28px; font-size: 1rem; text-decoration: none; box-shadow: var(--shadow-accent);">
           Unirse al Discord Oficial
