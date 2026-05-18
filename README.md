@@ -53,7 +53,9 @@ Proyecto creado principalmente para la comunidad hispanohablante de Geometry Das
 
 ## 🌐 Página web
 
-👉 [https://proyecto-skl.github.io/-proyecto-skl-/#mainlist](https://proyecto-skl.github.io/-proyecto-skl-/#mainlist)
+[Los respectivos creditos e inspiraciones están dentro de la pagina en el apartado "Sobre Nosotros"](https://proyecto-skl.github.io/-proyecto-skl-/#about)
+
+👉 [inicio de la pagina - https://proyecto-skl.github.io/-proyecto-skl-/#mainlist](https://proyecto-skl.github.io/-proyecto-skl-/#mainlist)
 
 ## 📷 Capturas
 
