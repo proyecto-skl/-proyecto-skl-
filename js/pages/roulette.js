@@ -82,9 +82,9 @@ function updateUI(container) {
           <span style="font-size: 3rem;">🎰</span>
           <h2 style="font-family: var(--font-ui); margin: 16px 0; color: var(--accent-primary);">Reglas del Desafío</h2>
           <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.6; text-align: left; margin-bottom: 24px;">
-            • Arrancás necesitando al menos un <strong>1%</strong>.<br>
+            • Empezá con al menos un <strong>1%</strong>.<br>
             • Si lográs un porcentaje mayor (ej: 12%), lo ingresás y avanzarás directamente al <strong>13%</strong> en el próximo nivel.<br>
-            • Tenés <strong>3 vidas</strong> y disponés de <strong>3 Skips</strong> mágicos para esquivar niveles imposibles.
+            • Tenés <strong>3 vidas</strong> y disponés de <strong>3 Skips</strong> para saltarte niveles.
           </p>
           
           <button id="start-roulette-btn" class="topbar-btn-cta" style="width: 100%; height: 48px; font-size: 1.1rem; box-shadow: var(--shadow-accent);">
@@ -118,7 +118,10 @@ function updateUI(container) {
   } else {
     // INTERFAZ DE JUEGO ACTIVO
     const lvl = gameState.currentLevel;
-    const thumbnail = lvl.thumbnail || 'https://img.youtube.com/vi/placeholder/mqdefault.jpg';
+    const videoId = lvl.verification.split('v=')[1]?.split('&')[0];
+    const thumbnail = videoId 
+     ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` 
+     : 'https://img.youtube.com/vi/placeholder/mqdefault.jpg';
     const hearts = Array(3).fill(0).map((_, i) => i < gameState.lives ? '❤️' : '🖤').join(' ');
 
     container.innerHTML = `
@@ -167,11 +170,11 @@ function updateUI(container) {
 
           <div style="display: flex; gap: 12px; justify-content: center;">
             <button id="btn-fail" style="background: rgba(255,69,69,0.1); border: 1px solid #ff4545; color: #ff4545; height: 38px; padding: 0 16px; border-radius: var(--radius-md); font-family: var(--font-ui); font-weight: bold; font-size: 0.85rem; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,69,69,0.2)'" onmouseout="this.style.background='rgba(255,69,69,0.1)'">
-              Morí sin llegar al objetivo 💀
+              no llegué al objetivo
             </button>
 
             <button id="btn-skip" ${gameState.skips <= 0 ? 'disabled style="opacity: 0.3; cursor: not-allowed;"' : 'style="cursor:pointer;"'} style="background: rgba(59,130,246,0.1); border: 1px solid var(--accent-blue); color: var(--accent-blue); height: 38px; padding: 0 16px; border-radius: var(--radius-md); font-family: var(--font-ui); font-weight: bold; font-size: 0.85rem; transition: background 0.2s;" onmouseover="if(!this.disabled) this.style.background='rgba(59,130,246,0.2)'" onmouseout="if(!this.disabled) this.style.background='rgba(59,130,246,0.1)'">
-              Pasar Nivel (Skip 🌀)
+              Skip Nivel
             </button>
           </div>
         </div>
@@ -194,7 +197,7 @@ function updateUI(container) {
         </button>
 
         ${gameState.gameOver ? `
-          <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(8, 11, 18, 0.95); display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: var(--radius-lg); border: 2px solid #ff4545; z-index: 100;" class="animate-fadeIn">
+          <div style="position: absolute; top: 0; left: 0%; width: 100%; height: 67%; background: rgba(36, 2, 2, 0.8); display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: var(--radius-lg); border: 2px solid #ff4545; z-index: 100;" class="animate-fadeIn">
             <span style="font-size: 4rem; margin-bottom: 8px;">💀</span>
             <h2 style="font-family: var(--font-ui); font-size: 2.2rem; color: #ff4545; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 2px;">¡Fin del Juego!</h2>
             <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem;">Te quedaste sin vidas en el objetivo del <strong>${gameState.currentPercent}%</strong></p>

@@ -213,14 +213,14 @@ function buildLeaderboardHTML(players) {
           <div class="podium-badge" style="
             position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
             background: ${item.label === '1st' ? '#f5a623' : item.label === '2nd' ? '#cbd5e0' : '#ed8936'};
-            color: #000; font-weight: bold; padding: 4px 12px; border-radius: 20px; font-size: 12px;
+            color: #000; font-weight: bold; padding: 4px 12px; border-radius: 30px; font-size: 10px;
           ">
-            ${item.label === '1st' ? '👑 TOP 1' : item.label === '2nd' ? '🥈 TOP 2' : '🥉 TOP 3'}
+            ${item.label === '1st' ? 'TOP 1' : item.label === '2nd' ? 'TOP 2' : 'TOP 3'}
           </div>
-          <h3 style="margin: 15px 0 5px 0; color: #fff; font-size: 18px;">${escapeHTML(item.p.name)}</h3>
+          <h3 style="margin: 15px 0 5px 0; color: #fff; font-size: 20px;">${escapeHTML(item.p.name)}</h3>
           <div style="font-size: 18px; font-weight: bold; color: #48bb78; margin-top: 8px;">${item.p.totalPoints} PTS</div>
-          <div style="font-size: 11px; color: #718096; margin-top: 5px;">
-            🔍 Click para ver detalles
+          <div style="font-size: 15px; color: #55647a; margin-top: 5px;">
+            Click para ver detalles
           </div>
         </div>
       `).join('')}
