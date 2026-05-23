@@ -21,6 +21,7 @@ const ROUTES = {
   'leaderboard': () => loadPage('leaderboard'),
   'news'       : () => loadPage('news'),
   'roulette'   : () => loadPage('roulette'),
+  'chatoloc'   : () => loadPage('chatoloc'), 
   'about'      : () => loadPage('about'),
 };
 
@@ -78,6 +79,7 @@ function updateActiveNav(page) {
     challenges:  'Challenges',
     leaderboard: 'Leaderboard',
     news:        'News & Updates',
+    chatoloc: 'Chat OOC',
   };
   const el = document.getElementById('topbar-title');
   if (el) el.textContent = titles[page] ?? 'Demon List';
