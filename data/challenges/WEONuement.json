@@ -1,0 +1,18 @@
+{
+    "id": 141999994,
+    "name": "WEONuement",
+    "author": "EnzQ",
+    "creators": ["Suixam"],
+    "verifier": "Suixam",
+    "verification": "https://www.youtube.com/watch?v=VjtfoqtRf0I",
+    "percentToQualify": "100",
+    "password": "Free To Copy",
+    "records": [
+        {
+            "user": "EnzQ",
+            "link": "https://www.youtube.com/watch?v=VjtfoqtRf0I",
+            "percent": 100,
+            "hz": 120
+        }
+    ]
+}
